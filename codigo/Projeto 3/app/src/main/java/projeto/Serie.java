@@ -6,7 +6,7 @@ public class Serie {
 	private String genero;
 	private String idioma;
 	private int quantidadeDeEpisodios;
-	private int audiencia;
+	private int audiencia = 0;
 
 
 
