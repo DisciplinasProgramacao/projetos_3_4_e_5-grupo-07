@@ -48,7 +48,15 @@ public class Cliente {
 		return listaParaVer.stream()
 			.filter(serie -> serie.getGenero().equals(genero)).collect(Collectors.toList());
 	}
-
+	/**
+	 * Retorna uma lista das séries que tenham aquele idioma da lista a assistir
+	 * @param idioma
+	 * @return
+	 */
+	public List<Serie> filtarPorIdioma(String idioma) {
+		return listaParaVer.stream()
+			.filter(serie -> serie.getIdioma().equals(idioma)).collect(Collectors.toList());
+	}
 	/**
 	 * Retorna uma lista das séries que tenham aquela quantidade de episodios
 	 * @param n_Episodios
