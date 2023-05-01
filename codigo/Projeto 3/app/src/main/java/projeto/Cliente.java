@@ -1,9 +1,6 @@
 package projeto;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,16 +41,17 @@ public class Cliente {
 	 * @param genero
 	 * @return
 	 */
-	public List<Serie> filtarPorGenero(String genero) {
+	public List<Serie> filtrarPorGenero(String genero) {
 		return listaParaVer.stream()
 			.filter(serie -> serie.getGenero().equals(genero)).collect(Collectors.toList());
 	}
+
 	/**
 	 * Retorna uma lista das séries que tenham aquele idioma da lista a assistir
 	 * @param idioma
 	 * @return
 	 */
-	public List<Serie> filtarPorIdioma(String idioma) {
+	public List<Serie> filtrarPorIdioma(String idioma) {
 		return listaParaVer.stream()
 			.filter(serie -> serie.getIdioma().equals(idioma)).collect(Collectors.toList());
 	}
@@ -62,11 +60,10 @@ public class Cliente {
 	 * @param n_Episodios
 	 * @return
 	 */
-	public List<Serie> filtarPorQuantidadeDeEpisodio(int n_Episodios) {
+	public List<Serie> filtrarPorQtdEpisodios(int n_Episodios) {
 		return listaParaVer.stream()
 			.filter(serie -> serie.getQuantidadeDeEpisodios() == n_Episodios).collect(Collectors.toList());
 	}
-
 	/**
 	 * registra uma audiência na série
 	 * @param serie
