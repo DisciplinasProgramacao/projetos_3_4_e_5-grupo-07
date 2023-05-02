@@ -7,6 +7,7 @@ public class Serie {
 	private String idioma;
 	private int quantidadeDeEpisodios;
 	private int audiencia = 0;
+	private int avaliacao = 0;
 
 
 
@@ -73,5 +74,12 @@ public class Serie {
 
 	public void setAudiencia(int audiencia) {
 		this.audiencia = audiencia;
+	}
+	public int getAvaliacao() {
+		return avaliacao;
+	}
+
+	public void setAvaliacao(int avaliacao) {
+		this.avaliacao = avaliacao;
 	}
 }

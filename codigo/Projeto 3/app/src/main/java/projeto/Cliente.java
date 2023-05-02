@@ -71,4 +71,12 @@ public class Cliente {
 	public void registrarAudiencia(Serie serie) {
 		serie.registrarAudiencia();
 	}
+	/**
+	 * registra uma nota para a série
+	 * @param serie
+	 * @param nota
+	 */
+	public void registrarAvaliacao(Serie serie, int nota) {
+		serie.setAvaliacao(nota);
+	}
 }
