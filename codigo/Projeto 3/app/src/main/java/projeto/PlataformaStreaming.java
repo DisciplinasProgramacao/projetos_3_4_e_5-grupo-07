@@ -6,9 +6,17 @@ import java.util.stream.Collectors;
 
 public class PlataformaStreaming{
     private String nome;
-    private HashMap<String, Serie> series;
-    private HashMap<String, Cliente> clientes;
+    private HashMap<String, Serie> series = new HashMap<String, Serie>();
+    private HashMap<String, Cliente> clientes = new HashMap<String, Cliente>();;
     private Cliente clienteAtual;
+
+	public void adicionarSerie(Serie serie) {
+		series.put(serie.getNome(), serie);
+	}
+
+	public void adicionarCliente(Cliente cliente) {
+		clientes.put(cliente.getNomeDeUsuario(), cliente);
+	}
 
 	public String getNome() {
 				return nome;
@@ -58,5 +66,9 @@ public class PlataformaStreaming{
 	public List<Serie> filtrarPorIdioma(String idioma) {
 		return series.values().stream()
 		.filter(serie -> serie.getIdioma().equals(idioma)).collect(Collectors.toList());
+	}
+
+	public void registrarAudiencia(Serie serie) {
+		serie.registrarAudiencia();
 	}
 }
