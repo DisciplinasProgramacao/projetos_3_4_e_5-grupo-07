@@ -61,9 +61,9 @@ public class Cliente {
 	 * @param n_Episodios
 	 * @return
 	 */
-	public List<Serie> filtrarPorQtdEpisodios(int n_Episodios) {
+	public List<Serie> filtrarPorQtdEpisodios(int nEpisodios) {
 		return listaParaVer.stream()
-			.filter(serie -> serie.getQuantidadeDeEpisodios() == n_Episodios).collect(Collectors.toList());
+			.filter(serie -> serie.getQuantidadeDeEpisodios() == nEpisodios).collect(Collectors.toList());
 	}
 	/**
 	 * registra uma audiência na série
