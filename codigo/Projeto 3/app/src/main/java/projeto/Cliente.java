@@ -19,6 +19,7 @@ public class Cliente {
 		listaParaVer = new ArrayList<Serie>();
 		listaJaVista = new ArrayList<Serie>();
 	}
+	
 
 	/**
 	 * Adiciona série a lista
@@ -78,5 +79,53 @@ public class Cliente {
 	 */
 	public void registrarAvaliacao(Serie serie, int nota) {
 		serie.setAvaliacao(nota);
+	}
+
+
+
+	public String getNomeDeUsuario() {
+		return nomeDeUsuario;
+	}
+
+
+
+	public void setNomeDeUsuario(String nomeDeUsuario) {
+		this.nomeDeUsuario = nomeDeUsuario;
+	}
+
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+
+
+	public List<Serie> getListaParaVer() {
+		return listaParaVer;
+	}
+
+
+
+	public void setListaParaVer(List<Serie> listaParaVer) {
+		this.listaParaVer = listaParaVer;
+	}
+
+
+
+	public List<Serie> getListaJaVista() {
+		return listaJaVista;
+	}
+
+
+
+	public void setListaJaVista(List<Serie> listaJaVista) {
+		this.listaJaVista = listaJaVista;
 	}
 }
