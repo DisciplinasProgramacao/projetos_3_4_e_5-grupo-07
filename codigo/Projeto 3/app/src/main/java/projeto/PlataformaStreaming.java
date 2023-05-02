@@ -1,6 +1,8 @@
 package projeto;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class PlataformaStreaming{
     private String nome;
@@ -41,5 +43,20 @@ public class PlataformaStreaming{
 			}
 		}
 		return null;
+	}
+
+	public List<Serie> filtrarPorGenero(String genero) {
+		return series.values().stream()
+		.filter(serie -> serie.getGenero().equals(genero)).collect(Collectors.toList());
+	}
+
+	public List<Serie> filtrarPorQtdEpisodios(int nEpisodios) {
+		return series.values().stream()
+		.filter(serie -> serie.getQuantidadeDeEpisodios() == nEpisodios).collect(Collectors.toList());
+	}
+
+	public List<Serie> filtrarPorIdioma(String idioma) {
+		return series.values().stream()
+		.filter(serie -> serie.getIdioma().equals(idioma)).collect(Collectors.toList());
 	}
 }
