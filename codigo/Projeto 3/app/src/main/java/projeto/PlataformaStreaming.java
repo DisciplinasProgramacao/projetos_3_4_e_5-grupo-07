@@ -18,6 +18,11 @@ public class PlataformaStreaming{
 		clientes.put(cliente.getNomeDeUsuario(), cliente);
 	}
 
+	
+	public void adicionarFilme(Filme filme) {
+        filme.put(filme.getId(), filme);
+    	}
+	
 	public String getNome() {
 				return nome;
 	}
