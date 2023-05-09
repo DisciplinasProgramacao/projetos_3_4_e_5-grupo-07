@@ -1,5 +1,3 @@
-package projeto;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,6 +10,8 @@ public class Cliente {
 	private String senha;
 	private List<Serie> listaParaVer;
 	private List<Serie> listaJaVista;
+	private boolean especialista;
+    private List<Avaliacao> avaliacoes;
 
 	public Cliente(String nomeDeUsuario, String senha) {
 		this.nomeDeUsuario = nomeDeUsuario;
@@ -127,5 +127,25 @@ public class Cliente {
 
 	public void setListaJaVista(List<Serie> listaJaVista) {
 		this.listaJaVista = listaJaVista;
+	}
+
+
+	public boolean isEspecialista() {
+		return especialista;
+	}
+
+
+	public void setEspecialista(boolean especialista) {
+		this.especialista = especialista;
+	}
+
+
+	public List<Avaliacao> getAvaliacoes() {
+		return avaliacoes;
+	}
+
+
+	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+		this.avaliacoes = avaliacoes;
 	}
 }
