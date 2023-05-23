@@ -1,28 +1,26 @@
-package projeto;
-
 public class Avaliacao {
 
-	private int nota;
+	private float nota;
 	private String comentario;
-	private int data;
+	private String data;
 	
-	
+	public float getNota() {
+		return nota;
+	}
+	public void setNota(float nota) {
+		this.nota = nota;
+	}
 	public String getComentario() {
 		return comentario;
 	}
-	
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
 	}
-	
-	public int getNota() {
-		return nota;
+	public String getData() {
+		return data;
 	}
-	
-	public void setNota(int nota) {
-		this.nota = nota;
+	public void setData(String data) {
+		this.data = data;
 	}
-	
-
 	
 }
