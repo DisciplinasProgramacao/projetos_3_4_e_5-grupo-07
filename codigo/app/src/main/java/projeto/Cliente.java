@@ -14,7 +14,7 @@ public class Cliente {
 	private List<Serie> listaParaVer;
 	private List<Serie> listaJaVista;
 	private boolean especialista;
-    private Map<Midia, Avaliacao> avaliacoes;
+    private Map<Midia, Avaliacao> avaliacao;
 
 	public Cliente(String nomeDeUsuario, String senha) {
 		this.nomeDeUsuario = nomeDeUsuario;
