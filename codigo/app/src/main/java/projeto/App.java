@@ -58,7 +58,7 @@ public class App {
     }
 
     private static void cadastrarMidia(PlataformaStreaming plataforma, Scanner scanner) {
-
+/*
     
 
         switch (opcao) {
@@ -67,6 +67,6 @@ public class App {
         
             default:
                 System.out.println("Opção inválida. Tente novamente.");
-        }
+        } */
     }
 }
