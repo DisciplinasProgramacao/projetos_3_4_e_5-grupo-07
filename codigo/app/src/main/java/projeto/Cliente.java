@@ -1,6 +1,7 @@
 package projeto;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -14,13 +15,14 @@ public class Cliente {
 	private List<Serie> listaParaVer;
 	private List<Serie> listaJaVista;
 	private boolean especialista;
-    private Map<Midia, Avaliacao> avaliacao;
+    private Map<Midia, Avaliacao> avaliacoes;
 
 	public Cliente(String nomeDeUsuario, String senha) {
 		this.nomeDeUsuario = nomeDeUsuario;
 		this.senha = senha;
 		listaParaVer = new ArrayList<Serie>();
 		listaJaVista = new ArrayList<Serie>();
+		avaliacoes = new HashMap<Midia, Avaliacao>();
 	}
 	
 
