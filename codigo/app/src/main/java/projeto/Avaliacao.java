@@ -1,3 +1,5 @@
+package projeto;
+
 public class Avaliacao {
 
 	private float nota;
