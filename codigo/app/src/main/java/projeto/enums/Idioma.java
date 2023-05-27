@@ -19,4 +19,17 @@ public enum Idioma {
 	public static Idioma random()  {
 		return VALUES.get(RANDOM.nextInt(SIZE));
 	}
+
+	public String toString() {
+		switch (this) {
+			case Ingles:
+				return "Ingles";
+			case Portugues:
+				return "Português";
+			case Espanhol:
+				return "Espanhol";
+			default:
+				return null;
+		}
+	}
 }

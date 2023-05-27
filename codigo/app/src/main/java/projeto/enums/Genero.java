@@ -19,4 +19,25 @@ public enum Genero {
 	public static Genero random()  {
 		return VALUES.get(RANDOM.nextInt(SIZE));
 	}
+
+	public String toString() {
+		switch (this) {
+			case Acao:
+				return "Ação";
+			case Comedia:
+				return "Comédia";
+			case Suspense:
+				return "Suspense";
+			case Terror:
+				return "Terror";
+			case Romance:
+				return "Romance";
+			case Drama:
+				return "Drama";
+			case FiccaoCientifica:
+				return "Ficção Cientifica";
+			default:
+				return null;
+		}
+	}
 }
