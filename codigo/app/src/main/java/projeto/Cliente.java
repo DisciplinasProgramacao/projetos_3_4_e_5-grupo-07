@@ -6,14 +6,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import projeto.enums.Genero;
+import projeto.enums.Idioma;
+
 /**
  * Cliente
  */
 public class Cliente {
 	private String nomeDeUsuario;
 	private String senha;
-	private List<Serie> listaParaVer;
-	private List<Serie> listaJaVista;
+	private List<Serie> listaParaVer; private List<Serie> listaJaVista;
 	private boolean especialista;
     private Map<Midia, Avaliacao> avaliacoes;
 
@@ -47,7 +49,7 @@ public class Cliente {
 	 * @param genero
 	 * @return
 	 */
-	public List<Serie> filtrarPorGenero(String genero) {
+	public List<Serie> filtrarPorGenero(Genero genero) {
 		return listaParaVer.stream()
 			.filter(serie -> serie.getGenero().equals(genero)).collect(Collectors.toList());
 	}
@@ -57,7 +59,7 @@ public class Cliente {
 	 * @param idioma
 	 * @return
 	 */
-	public List<Serie> filtrarPorIdioma(String idioma) {
+	public List<Serie> filtrarPorIdioma(Idioma idioma) {
 		return listaParaVer.stream()
 			.filter(serie -> serie.getIdioma().equals(idioma)).collect(Collectors.toList());
 	}
@@ -82,11 +84,17 @@ public class Cliente {
 	 * @param serie
 	 * @param nota
 	 */
-	public void registrarAvaliacao(Serie serie, int nota) {
-		serie.setAvaliacao(nota);
+	public void registrarAvaliacao(Serie serie, int nota, String comentario) {
+		Avaliacao avaliacao = new Avaliacao(nota, comentario);
+		avaliacoes.put(serie, avaliacao);
+		serie.avalia(this, avaliacao);
 	}
-
-
+	
+	public void registrarAvaliacao(Serie serie, int nota) {
+		Avaliacao avaliacao = new Avaliacao(nota);
+		avaliacoes.put(serie, avaliacao);
+		serie.avalia(this, avaliacao);
+	}
 
 	public String getNomeDeUsuario() {
 		return nomeDeUsuario;

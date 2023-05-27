@@ -13,7 +13,7 @@ public class Midia {
     private int audiencia = 0;
     private Genero genero;
     private Idioma idioma;
-	private Map<Cliente, Avaliacao> avaliacao;
+	private Map<Cliente, Avaliacao> avaliacoes;
 
 	public Midia(String nome, Genero genero, Idioma idioma) {
 		this.nome = nome;
@@ -55,5 +55,9 @@ public class Midia {
 
 	public void setAudiencia(int audiencia) {
 		this.audiencia = audiencia;
+	}
+
+	public void avalia(Cliente cliente, Avaliacao avaliacao) {
+		avaliacoes.put(cliente, avaliacao);
 	}
 }

@@ -6,6 +6,16 @@ public class Avaliacao {
 	private String comentario;
 	private String data;
 	
+	public Avaliacao(float nota, String comentario) {
+		this.nota = nota;
+		this.comentario = comentario;
+	}
+
+	public Avaliacao(float nota) {
+		this.nota = nota;
+	}
+
+
 	public float getNota() {
 		return nota;
 	}
