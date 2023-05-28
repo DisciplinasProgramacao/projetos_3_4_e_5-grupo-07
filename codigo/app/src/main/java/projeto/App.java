@@ -1,7 +1,5 @@
 package projeto;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.io.IOException;
 import java.util.Scanner;
 
