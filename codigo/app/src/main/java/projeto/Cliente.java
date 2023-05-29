@@ -17,7 +17,9 @@ import projeto.enums.Idioma;
 public class Cliente {
 	private String usuario;
 	private String senha;
+	@JsonIgnore
 	private List<Serie> listaParaVer;
+	@JsonIgnore
 	private List<Serie> listaJaVista;
 	@JsonIgnore
     private Map<Midia, Avaliacao> avaliacoes;
