@@ -17,11 +17,13 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit test framework.
+    // Use JUnit test frameork.
     testImplementation 'junit:junit:4.13.2'
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
+
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
 }
 
 application {

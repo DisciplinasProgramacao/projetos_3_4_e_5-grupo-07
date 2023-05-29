@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import projeto.enums.Genero;
 import projeto.enums.Idioma;
 
@@ -15,7 +17,9 @@ import projeto.enums.Idioma;
 public class Cliente {
 	private String usuario;
 	private String senha;
-	private List<Serie> listaParaVer; private List<Serie> listaJaVista;
+	private List<Serie> listaParaVer;
+	private List<Serie> listaJaVista;
+	@JsonIgnore
     private Map<Midia, Avaliacao> avaliacoes;
 
 	public Cliente(String nome, String usuario, String senha) {
