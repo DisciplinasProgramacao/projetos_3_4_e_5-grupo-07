@@ -107,24 +107,17 @@ public class Cliente {
 		return listaParaVer;
 	}
 
-
-
 	public void setListaParaVer(List<Serie> listaParaVer) {
 		this.listaParaVer = listaParaVer;
 	}
-
-
 
 	public List<Serie> getListaJaVista() {
 		return listaJaVista;
 	}
 
-
-
 	public void setListaJaVista(List<Serie> listaJaVista) {
 		this.listaJaVista = listaJaVista;
 	}
-
 
 	public boolean isEspecialista() {
 		return avaliacoes.size() > 5;

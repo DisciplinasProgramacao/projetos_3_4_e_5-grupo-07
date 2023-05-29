@@ -24,6 +24,12 @@ public class Midia {
 		this.idioma = idioma;
 	}
 
+	public Midia(String nome, String genero, String idioma) {
+		this.nome = nome;
+		this.genero = Genero.fromString(genero);
+		this.idioma = Idioma.fromString(idioma);
+	}
+
 	public void registrarAudiencia() {
 		audiencia++;
 	}
@@ -45,7 +51,7 @@ public class Midia {
 	}
 
 	public void setGenero(String genero) {
-		this.genero = Genero.valueOf(genero);
+		this.genero = Genero.fromString(genero);
 	}
 
 	public Idioma getIdioma() {
@@ -54,6 +60,10 @@ public class Midia {
 
 	public void setIdioma(Idioma idioma) {
 		this.idioma = idioma;
+	}
+
+	public void setIdioma(String idioma) {
+		this.idioma = Idioma.fromString(idioma);
 	}
 
 	public int getAudiencia() {
