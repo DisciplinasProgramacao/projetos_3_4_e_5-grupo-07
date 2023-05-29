@@ -2,12 +2,14 @@ package projeto;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class PlataformaStreaming{
     private String nome;
-    private HashMap<String, Serie> series = new HashMap<String, Serie>();
-    private HashMap<String, Cliente> clientes = new HashMap<String, Cliente>();;
+    private Map<String, Serie> series = new HashMap<String, Serie>();
+    private Map<String, Filme> filmes = new HashMap<String, Filme>();
+    private Map<String, Cliente> clientes = new HashMap<String, Cliente>();;
     private Cliente clienteAtual;
 
 	public void adicionarSerie(Serie serie) {
@@ -15,47 +17,48 @@ public class PlataformaStreaming{
 	}
 
 	public void adicionarCliente(Cliente cliente) {
-		clientes.put(cliente.getNomeDeUsuario(), cliente);
+		clientes.put(cliente.getUsuario(), cliente);
 	}
 
-	
 	public void adicionarFilme(Filme filme) {
-        filme.put(filme.getId(), filme);
-    	}
+        filmes.put(filme.getNome(), filme);
+	}
 	
 	public String getNome() {
-				return nome;
+		return nome;
 	}
+
 	public void setNome(final String nome) {
-				this.nome = nome;
+		this.nome = nome;
 	}
+
 	public Cliente getClienteAtual() {
-				return clienteAtual;
+		return clienteAtual;
 	}
-	public void setClienteAtual(final Cliente clienteAtual) {
-				this.clienteAtual = clienteAtual;
-	}
-	public HashMap<String, Serie> getSeries(){
+
+	public Map<String, Serie> getSeries(){
 		return series;
 	}
+
 	public void setSeries (final HashMap<String, Serie> series){
 		this.series = series;
 	}
-	public HashMap<String, Cliente> getClientes(){
+
+	public Map<String, Cliente> getClientes(){
 		return clientes;
 	}
+
 	public void setClientes (final HashMap<String, Cliente> clientes){
 		this.clientes = clientes;
 	}
 
-	public Cliente login(final String nomeUsuario, final String senha){
-		for(Cliente c : clientes.values()){
-			if(c.getNomeDeUsuario().equals(nomeUsuario) && c.getSenha().equals(senha)){
-				clienteAtual = c;
-				return c;
-			}
-		}
-		return null;
+	public boolean login(final String nomeUsuario, final String senha){
+		clienteAtual = clientes.values().stream().filter(c -> c.login(nomeUsuario, senha)).findFirst().orElse(null);
+		return clienteAtual != null;
+	}
+
+	public boolean estaLogado() {
+		return clienteAtual != null;
 	}
 
 	public List<Serie> filtrarPorGenero(String genero) {

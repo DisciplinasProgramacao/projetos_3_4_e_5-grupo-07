@@ -13,14 +13,13 @@ import projeto.enums.Idioma;
  * Cliente
  */
 public class Cliente {
-	private String nomeDeUsuario;
+	private String usuario;
 	private String senha;
 	private List<Serie> listaParaVer; private List<Serie> listaJaVista;
-	private boolean especialista;
     private Map<Midia, Avaliacao> avaliacoes;
 
-	public Cliente(String nomeDeUsuario, String senha) {
-		this.nomeDeUsuario = nomeDeUsuario;
+	public Cliente(String usuario, String senha) {
+		this.usuario = usuario;
 		this.senha = senha;
 		listaParaVer = new ArrayList<Serie>();
 		listaJaVista = new ArrayList<Serie>();
@@ -84,41 +83,21 @@ public class Cliente {
 	 * @param serie
 	 * @param nota
 	 */
-	public void registrarAvaliacao(Serie serie, int nota, String comentario) {
+	public void avalia(Serie serie, int nota, String comentario) {
 		Avaliacao avaliacao = new Avaliacao(nota, comentario);
 		avaliacoes.put(serie, avaliacao);
 		serie.avalia(this, avaliacao);
 	}
 	
-	public void registrarAvaliacao(Serie serie, int nota) {
+	public void avalia(Serie serie, int nota) {
 		Avaliacao avaliacao = new Avaliacao(nota);
 		avaliacoes.put(serie, avaliacao);
 		serie.avalia(this, avaliacao);
 	}
 
-	public String getNomeDeUsuario() {
-		return nomeDeUsuario;
+	public String getUsuario() {
+		return usuario;
 	}
-
-
-
-	public void setNomeDeUsuario(String nomeDeUsuario) {
-		this.nomeDeUsuario = nomeDeUsuario;
-	}
-
-
-
-	public String getSenha() {
-		return senha;
-	}
-
-
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-
 
 	public List<Serie> getListaParaVer() {
 		return listaParaVer;
@@ -144,11 +123,10 @@ public class Cliente {
 
 
 	public boolean isEspecialista() {
-		return especialista;
+		return avaliacoes.size() > 5;
 	}
 
-
-	public void setEspecialista(boolean especialista) {
-		this.especialista = especialista;
+	public boolean login(String usuario, String senha) {
+		return this.usuario == usuario && this.senha == senha;
 	}
 }
