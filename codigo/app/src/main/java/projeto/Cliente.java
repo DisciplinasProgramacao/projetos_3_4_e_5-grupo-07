@@ -18,7 +18,7 @@ public class Cliente {
 	private List<Serie> listaParaVer; private List<Serie> listaJaVista;
     private Map<Midia, Avaliacao> avaliacoes;
 
-	public Cliente(String usuario, String senha) {
+	public Cliente(String nome, String usuario, String senha) {
 		this.usuario = usuario;
 		this.senha = senha;
 		listaParaVer = new ArrayList<Serie>();

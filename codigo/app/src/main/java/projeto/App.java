@@ -5,17 +5,16 @@ import java.util.Scanner;
 
 
 public class App {
+	static Scanner scanner = new Scanner(System.in);
     
     public static void main(String[] args) throws IOException {
-        
-        
-
         PlataformaStreaming plataforma = new PlataformaStreaming(); 
-        Scanner scanner = new Scanner(System.in);
         
         while (true) {
             System.out.println("Menu:");
-            System.out.println("1. Adicionar cliente");
+            System.out.println("1. Fazer Login");
+            System.out.println("2. Cadastrar cliente");
+            System.out.println("3. Cadastrar Midia");
             System.out.println("0. Sair");
 
             System.out.print("Escolha uma opção: ");
@@ -23,15 +22,16 @@ public class App {
             scanner.nextLine(); 
 
             switch (opcao) {
-                case 1:
-                    cadastrarCliente(plataforma, scanner);
-                    break;
+				case 1:
+					break;
                 case 2:
-                    cadastrarMidia(plataforma, scanner);
+                    cadastrarCliente(plataforma);
+                    break;
+                case 3:
+                    cadastrarMidia(plataforma);
                     break;
                 case 0:
                     System.out.println("Saindo...");
-                    scanner.close();
                     return;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
@@ -39,23 +39,23 @@ public class App {
         }
     }
 
-    private static void cadastrarCliente(PlataformaStreaming plataforma, Scanner scanner) {
+    private static void cadastrarCliente(PlataformaStreaming plataforma) {
         System.out.println("Digite o nome completo do cliente:");
-        String nCompleto = scanner.nextLine();
+        String nome = scanner.nextLine();
 
         System.out.println("Digite o nome de usuário do cliente:");
-        String nUsuario = scanner.nextLine();
+        String usuario = scanner.nextLine();
 
         System.out.println("Digite a senha do cliente:");
-        String password = scanner.nextLine();
+        String senha = scanner.nextLine();
 
-        Cliente cliente = new Cliente(nCompleto, nUsuario);
+        Cliente cliente = new Cliente(nome, usuario, senha);
         plataforma.adicionarCliente(cliente);
         System.out.println("Cliente adicionado com sucesso!");
 
     }
 
-    private static void cadastrarMidia(PlataformaStreaming plataforma, Scanner scanner) {
+    private static void cadastrarMidia(PlataformaStreaming plataforma) {
 /*
     
 
