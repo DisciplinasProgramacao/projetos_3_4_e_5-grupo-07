@@ -53,7 +53,10 @@ public class PlataformaStreaming{
 	}
 
 	public boolean login(final String nomeUsuario, final String senha){
-		clienteAtual = clientes.values().stream().filter(c -> c.login(nomeUsuario, senha)).findFirst().orElse(null);
+		clienteAtual = clientes.values().stream()
+		.filter(c -> c.login(nomeUsuario, senha))
+		.findFirst()
+		.orElse(null);
 		return clienteAtual != null;
 	}
 
