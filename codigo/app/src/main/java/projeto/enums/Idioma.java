@@ -32,4 +32,11 @@ public enum Idioma {
 				return null;
 		}
 	}
+
+	public static Idioma fromString(String value) {
+		return Arrays.stream(values())
+		.filter(idioma -> idioma.toString().equalsIgnoreCase(value))
+		.findFirst()
+		.orElseThrow(() -> new IllegalArgumentException("Valor inválido para Genero: " + value));
+	}
 }

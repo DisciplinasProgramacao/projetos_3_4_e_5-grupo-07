@@ -40,4 +40,11 @@ public enum Genero {
 				return null;
 		}
 	}
+
+	public static Genero fromString(String value) {
+		return Arrays.stream(values())
+		.filter(genero -> genero.toString().equalsIgnoreCase(value))
+		.findFirst()
+		.orElseThrow(() -> new IllegalArgumentException("Valor inválido para Genero: " + value));
+	}
 }
