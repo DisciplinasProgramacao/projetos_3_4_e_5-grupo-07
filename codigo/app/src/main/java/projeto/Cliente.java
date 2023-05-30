@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import projeto.enums.Genero;
 import projeto.enums.Idioma;
 
@@ -15,17 +13,14 @@ import projeto.enums.Idioma;
  * Cliente
  */
 public class Cliente {
-	private String usuario;
+	private String nome;
 	private String senha;
-	@JsonIgnore
 	private List<Serie> listaParaVer;
-	@JsonIgnore
 	private List<Serie> listaJaVista;
-	@JsonIgnore
     private Map<Midia, Avaliacao> avaliacoes;
 
-	public Cliente(String nome, String usuario, String senha) {
-		this.usuario = usuario;
+	public Cliente(String nome, String senha) {
+		this.nome = nome;
 		this.senha = senha;
 		listaParaVer = new ArrayList<Serie>();
 		listaJaVista = new ArrayList<Serie>();
@@ -101,8 +96,8 @@ public class Cliente {
 		serie.avalia(this, avaliacao);
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public String getNome() {
+		return nome;
 	}
 
 	public List<Serie> getListaParaVer() {
@@ -125,7 +120,14 @@ public class Cliente {
 		return avaliacoes.size() > 5;
 	}
 
-	public boolean login(String usuario, String senha) {
-		return this.usuario == usuario && this.senha == senha;
+	public boolean login(String nome, String senha) {
+		return this.nome == nome && this.senha == senha;
+	}
+
+	public String salvar() {
+		return nome + "," + senha;
+	}
+
+	public void carregar(String csv) {
 	}
 }

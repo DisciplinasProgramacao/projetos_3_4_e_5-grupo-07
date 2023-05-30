@@ -22,4 +22,9 @@ public class Serie extends Midia {
 	public void setQuantidadeDeEpisodios(int quantidadeDeEpisodios) {
 		this.quantidadeDeEpisodios = quantidadeDeEpisodios;
 	}
+
+	@Override
+	public String salvar() {
+		return super.salvar() + "," + quantidadeDeEpisodios;
+	}
 }

@@ -17,7 +17,7 @@ public class PlataformaStreaming{
 	}
 
 	public void adicionarCliente(Cliente cliente) {
-		clientes.put(cliente.getUsuario(), cliente);
+		clientes.put(cliente.getNome(), cliente);
 	}
 
 	public void adicionarFilme(Filme filme) {
@@ -66,7 +66,7 @@ public class PlataformaStreaming{
 
 	public List<Serie> filtrarPorGenero(String genero) {
 		return series.values().stream()
-		.filter(serie -> serie.getGenero().equals(genero)).collect(Collectors.toList());
+		.filter(serie -> serie.getGenero().toString().equals(genero)).collect(Collectors.toList());
 	}
 
 	public List<Serie> filtrarPorQtdEpisodios(int nEpisodios) {
@@ -76,10 +76,28 @@ public class PlataformaStreaming{
 
 	public List<Serie> filtrarPorIdioma(String idioma) {
 		return series.values().stream()
-		.filter(serie -> serie.getIdioma().equals(idioma)).collect(Collectors.toList());
+		.filter(serie -> serie.getIdioma().toString().equals(idioma)).collect(Collectors.toList());
 	}
 
 	public void registrarAudiencia(Serie serie) {
 		serie.registrarAudiencia();
+	}
+
+	public String salvarSeries() {
+		return series.values().stream()
+		.map(Serie::salvar)
+		.collect(Collectors.joining("\n"));
+	}
+
+	public String salvarFilmes() {
+		return filmes.values().stream()
+		.map(Filme::salvar)
+		.collect(Collectors.joining("\n"));
+	}
+
+	public String salvarClientes() {
+		return clientes.values().stream()
+			.map(Cliente::salvar)
+			.collect(Collectors.joining("\n"));
 	}
 }

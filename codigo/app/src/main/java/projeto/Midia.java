@@ -2,8 +2,6 @@ package projeto;
 
 import java.util.Map;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import projeto.enums.Genero;
 import projeto.enums.Idioma;
 
@@ -15,7 +13,6 @@ public class Midia {
     private int audiencia = 0;
     private Genero genero;
     private Idioma idioma;
-	@JsonIgnore
 	private Map<Cliente, Avaliacao> avaliacoes;
 
 	public Midia(String nome, Genero genero, Idioma idioma) {
@@ -76,5 +73,13 @@ public class Midia {
 
 	public void avalia(Cliente cliente, Avaliacao avaliacao) {
 		avaliacoes.put(cliente, avaliacao);
+	}
+
+	public String salvar() {
+		return nome + "," + audiencia + "," + genero + "," + idioma;
+	}
+
+	public void carrega() {
+		
 	}
 }
