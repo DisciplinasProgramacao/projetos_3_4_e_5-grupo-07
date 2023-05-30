@@ -2,8 +2,6 @@ package projeto;
 
 import java.util.Map;
 
-import org.checkerframework.common.returnsreceiver.qual.This;
-
 import projeto.enums.Genero;
 import projeto.enums.Idioma;
 
