@@ -40,16 +40,13 @@ public class App {
     }
 
     private static void cadastrarCliente(PlataformaStreaming plataforma) {
-        System.out.println("Digite o nome completo do cliente:");
+        System.out.println("Digite o nome do cliente:");
         String nome = scanner.nextLine();
-
-        System.out.println("Digite o nome de usuário do cliente:");
-        String usuario = scanner.nextLine();
 
         System.out.println("Digite a senha do cliente:");
         String senha = scanner.nextLine();
 
-        Cliente cliente = new Cliente(nome, usuario, senha);
+        Cliente cliente = new Cliente(nome, senha);
         plataforma.adicionarCliente(cliente);
         System.out.println("Cliente adicionado com sucesso!");
 
