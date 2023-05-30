@@ -2,29 +2,27 @@ package projeto;
 
 import java.util.Map;
 
+import org.checkerframework.common.returnsreceiver.qual.This;
+
 import projeto.enums.Genero;
 import projeto.enums.Idioma;
 
 /**
  * Midia
  */
-public class Midia {
+public abstract class Midia {
     private String nome;
     private int audiencia = 0;
     private Genero genero;
     private Idioma idioma;
+	public String dataLancamento;
 	private Map<Cliente, Avaliacao> avaliacoes;
 
-	public Midia(String nome, Genero genero, Idioma idioma) {
+	public Midia(String nome, Genero genero, Idioma idioma, String dataLancamento) {
 		this.nome = nome;
 		this.genero = genero;
 		this.idioma = idioma;
-	}
-
-	public Midia(String nome, String genero, String idioma) {
-		this.nome = nome;
-		this.genero = Genero.fromString(genero);
-		this.idioma = Idioma.fromString(idioma);
+		this.dataLancamento = dataLancamento;
 	}
 
 	public void registrarAudiencia() {
@@ -79,7 +77,5 @@ public class Midia {
 		return nome + "," + audiencia + "," + genero + "," + idioma;
 	}
 
-	public void carrega() {
-		
-	}
+	public abstract Midia carrega(String linhacsv);
 }
