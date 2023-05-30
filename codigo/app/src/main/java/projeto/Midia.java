@@ -63,7 +63,7 @@ public abstract class Midia {
 		return audiencia;
 	}
 
-	public void setAudiencia(int audiencia) {
+	protected void setAudiencia(int audiencia) {
 		this.audiencia = audiencia;
 	}
 
@@ -72,7 +72,7 @@ public abstract class Midia {
 	}
 
 	public String salvar() {
-		return nome + "," + audiencia + "," + genero + "," + idioma;
+		return nome + "," + audiencia + "," + genero + "," + idioma + "," + dataLancamento;
 	}
 
 	public abstract Midia carrega(String linhacsv);
