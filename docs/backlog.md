@@ -1,12 +1,11 @@
 | Usuário      | Requisito | Motivação     | Status | Autor |
 | :----:        |    :----:   |          :----: |    :----:   |    :----:   |
-| Como um usuário, eu quero      | ler o arquivo de espectadores       | para  ...    |  ---    |   --   |
-| Como um usuário, eu quero      | ler o arquivo de series       | para  ...    |  ---    |   --   |
-| Como um usuário, eu quero      | ler o arquivo de audiencia       | para  ...    |  ---    |   --   |
-| Como um usuário, eu quero      | ler o arquivo de filmes       | para  ...    |  ---    |   --   |
-| Como um usuário, eu quero      | fazer o login      | para  conseguir assistir as series e filmes    |  ---    |   --   |
-| Como um administrador, eu quero      | registrar quantos clientes já assistiram uma série       | para  salvar quantas pessoas assistiram determinada serie    |  ---    |   --   |
-| Como um usuário, eu quero      | ler o arquivo de series       | para  ...    |  ---    |   --   |
+| Como um usuário, eu quero      | ler o arquivo de espectadores       | para  listar todos os espectadores    |  Em andamento    |   Queiroga   |
+| Como um usuário, eu quero      | ler o arquivo de series       | para  listar todas as series    |  Em andamento    |   Saulo   |
+| Como um usuário, eu quero      | ler o arquivo de audiencia       | para  listar a audiencia    |  Em andamento    |   Queiroga   |
+| Como um usuário, eu quero      | ler o arquivo de filmes       | para  listar todos os filmes    |  Em andamento    |   Queiroga   |
+| Como um usuário, eu quero      | fazer o login      | para  conseguir assistir as series e filmes    |  Finalizar    |   Diogo   |
+| Como um administrador, eu quero      | registrar quantos clientes já assistiram uma série       | para  salvar quantas pessoas assistiram determinada serie    |  Em andamento    |   --   |
 | Como um usuário, eu quero      | adicionar filme e serie na lista para ver       | para ajudar a lembrar quais mídias assistir    |    Finalizado   |    Saulo   |
 | Como um usuário, eu quero      | adicionar filme e serie na lista já vistas       | para ajudar a lembrar quais mídias já assisti    |    Em andamento   |    Philippe   |
 | Como um usuário, eu quero   | avaliar filme e serie         | para informar os outros usuários minha opinião      |    Em andamento   |    Diogo   |
