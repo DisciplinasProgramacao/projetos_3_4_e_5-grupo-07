@@ -1,11 +1,11 @@
 | Usuário      | Requisito | Motivação     | Status | Autor |
 | :----:        |    :----:   |          :----: |    :----:   |    :----:   |
-| Como um usuário, eu quero      | ler o arquivo de espectadores       | para  listar todos os espectadores    |  Em andamento    |   Queiroga   |
+| Como um usuário, eu quero      | ler o arquivo de espectadores       | para  listar todos os espectadores    |  Em andamento    |   João Francisco   |
 | Como um usuário, eu quero      | ler o arquivo de series       | para  listar todas as series    |  Em andamento    |   Saulo   |
-| Como um usuário, eu quero      | ler o arquivo de audiencia       | para  listar a audiencia    |  Em andamento    |   Queiroga   |
-| Como um usuário, eu quero      | ler o arquivo de filmes       | para  listar todos os filmes    |  Em andamento    |   Queiroga   |
-| Como um usuário, eu quero      | fazer o login      | para  conseguir assistir as series e filmes    |  Finalizar    |   Diogo   |
-| Como um administrador, eu quero      | registrar quantos clientes já assistiram uma série       | para  salvar quantas pessoas assistiram determinada serie    |  Em andamento    |   --   |
+| Como um usuário, eu quero      | ler o arquivo de audiencia       | para  listar a audiencia    |  Em andamento    |   João Francisco   |
+| Como um usuário, eu quero      | ler o arquivo de filmes       | para  listar todos os filmes    |  Em andamento    |   João Francisco   |
+| Como um usuário, eu quero      | fazer o login      | para  conseguir assistir as series e filmes    |  Finalizada    |   Diogo   |
+| Como um administrador, eu quero      | registrar quantos clientes já assistiram uma série       | para  salvar quantas pessoas assistiram determinada serie    |  Em andamento    |   Saulo   |
 | Como um usuário, eu quero      | adicionar filme e serie na lista para ver       | para ajudar a lembrar quais mídias assistir    |    Finalizado   |    Saulo   |
 | Como um usuário, eu quero      | adicionar filme e serie na lista já vistas       | para ajudar a lembrar quais mídias já assisti    |    Em andamento   |    Philippe   |
 | Como um usuário, eu quero   | avaliar filme e serie         | para informar os outros usuários minha opinião      |    Em andamento   |    Diogo   |
@@ -15,9 +15,9 @@
 | Como um administrador, eu quero   | adicionar e gerenciar os filme e serie que estão na plataforma         | para melhor cuidar da mesma      |    Em andamento   |   Philippe   |
 | Como um administrador, eu quero   | gerenciar clientes         | para ver saber se estão cadastrados na plataforma      |    Finalizado   |    Philippe   |
 | Como um administrador, eu quero   | registrar a audiencia         | para ver quantas pessoas assistiram as midias      |    FInalizado   |    João Francisco   |
-| Como um administrador, eu quero      | cadastrar novos clientes       | para  novas pessoas acessarem a página    |  Em andamento    |   --   |
-| Como um administrador, eu quero      | cadastrar novos filmes       | para  terem novos filmes cadastrados    |  Em andamento    |   --   |
-| Como um administrador, eu quero      | cadastrar novos serie       | para  terem novas series cadastrados    |  Em andamento    |   --   |
+| Como um administrador, eu quero      | cadastrar novos clientes       | para  novas pessoas acessarem a página    |  Em andamento    |   Diogo   |
+| Como um administrador, eu quero      | cadastrar novos filmes       | para  terem novos filmes cadastrados    |  Em andamento    |   João Francisco   |
+| Como um administrador, eu quero      | cadastrar novos serie       | para  terem novas series cadastrados    |  Em andamento    |   Saulo   |
 
 
 
