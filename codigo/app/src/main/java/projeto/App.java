@@ -53,15 +53,5 @@ public class App {
     }
 
     private static void cadastrarMidia(PlataformaStreaming plataforma) {
-/*
-    
-
-        switch (opcao) {
-            case 1:
-              
-        
-            default:
-                System.out.println("Opção inválida. Tente novamente.");
-        } */
     }
 }

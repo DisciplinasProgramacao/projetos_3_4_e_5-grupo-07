@@ -100,4 +100,25 @@ public class PlataformaStreaming{
 			.map(Cliente::salvar)
 			.collect(Collectors.joining("\n"));
 	}
+
+	public void carregarSeries(List<String> linhascsv) {
+		linhascsv.stream().forEach(linha -> {
+			Serie serie = Serie.carregar(linha);
+			series.put(serie.getNome(), serie);
+		});
+	}
+
+	public void carregarFilmes(List<String> linhascsv) {
+		linhascsv.stream().forEach(linha -> {
+			Filme filme = Filme.carregar(linha);
+			filmes.put(filme.getNome(), filme);
+		});
+	}
+
+	public void carregarClientes(List<String> linhascsv) {
+		linhascsv.stream().forEach(linha -> {
+			Cliente cliente = Cliente.carregar(linha);
+			clientes.put(cliente.getNome(), cliente);
+		});
+	}
 }

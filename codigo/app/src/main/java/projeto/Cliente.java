@@ -128,6 +128,10 @@ public class Cliente {
 		return nome + "," + senha;
 	}
 
-	public void carregar(String csv) {
+	public static Cliente carregar(String linhacsv) {
+		String[] atributos = linhacsv.split(",");
+		String nome = atributos[0];
+		String senha = atributos[4];
+		return new Cliente(nome, senha); 
 	}
 }

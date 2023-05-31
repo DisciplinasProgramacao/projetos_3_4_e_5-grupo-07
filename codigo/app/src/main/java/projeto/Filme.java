@@ -8,8 +8,7 @@ public class Filme extends Midia {
 		super(nome, genero, idioma, dataLancamento);
 	}
 
-	@Override
-	public Filme carrega(String linhacsv) {
+	public static Filme carregar(String linhacsv) {
 		String[] atributos = linhacsv.split(",");
 		String nome = atributos[0];
 		int audiencia = Integer.parseInt(atributos[1]);

@@ -75,5 +75,7 @@ public abstract class Midia {
 		return nome + "," + audiencia + "," + genero + "," + idioma + "," + dataLancamento;
 	}
 
-	public abstract Midia carrega(String linhacsv);
+	public static Midia carregar(String linhacsv) {
+		return null;
+	}
 }
