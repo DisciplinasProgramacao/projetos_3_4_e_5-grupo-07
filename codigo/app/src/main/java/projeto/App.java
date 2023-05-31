@@ -32,6 +32,7 @@ public class App {
                     break;
                 case 0:
                     System.out.println("Saindo...");
+					salvaArquivos();
                     return;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
