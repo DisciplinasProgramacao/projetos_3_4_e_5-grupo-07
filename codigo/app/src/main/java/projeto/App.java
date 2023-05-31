@@ -8,6 +8,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import projeto.enums.Genero;
+import projeto.enums.Idioma;
+
 public class App {
 	static Scanner scanner = new Scanner(System.in);
     static PlataformaStreaming plataforma = new PlataformaStreaming(); 
@@ -87,7 +90,7 @@ public class App {
                  int qtdEpisodios = scanner.nextInt();
               
 
-                 Serie serie = new Serie(nome, generoSerie , linguagemSerie , dataLancamento, qtdEpisodios);
+                 Serie serie = new Serie(nome, Genero.fromString(generoSerie), Idioma.fromString(linguagemSerie), dataLancamento, qtdEpisodios);
                  plataforma.adicionarSerie(serie);
                  System.out.println("Série adicionada com sucesso!");
                  break;
@@ -113,7 +116,7 @@ public class App {
                  int duracao = scanner.nextInt();
                  
 
-                 Filme filme = new Filme(nomeFilme, generoFilme, linguaFilme,dataLancamentoFilme, duracao);
+                 Filme filme = new Filme(nomeFilme, Genero.fromString(generoFilme), Idioma.fromString(linguaFilme),dataLancamentoFilme);
                  plataforma.adicionarFilme(filme);
                  System.out.println("Filme adicionado com sucesso!");
                  break;
