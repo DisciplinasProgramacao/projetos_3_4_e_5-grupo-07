@@ -13,6 +13,7 @@ public class App {
     static PlataformaStreaming plataforma = new PlataformaStreaming(); 
     
     public static void main(String[] args) throws IOException {
+	    carregaArquivos();
         while (true) {
             System.out.println("Menu:");
             System.out.println("1. Fazer Login");
@@ -56,8 +57,71 @@ public class App {
 
     }
 
-    private static void cadastrarMidia(PlataformaStreaming plataforma) {
-    }
+   private static void cadastrarMidia(PlataformaStreaming plataforma) {
+    	
+    	 System.out.println("Escolha o tipo de mídia:");
+         System.out.println("1. Série");
+         System.out.println("2. Filme");
+
+         System.out.print("Digite a opção: ");
+         int opcao = scanner.nextInt();
+         scanner.nextLine(); // Limpar o buffer do scanner
+         
+         
+         switch (opcao) {
+             case 1:
+            	 System.out.println("Digite o nome da série:");
+                 String nome = scanner.nextLine();
+
+
+                 System.out.println("Digite o nome da genero:");
+                 String generoSerie = scanner.nextLine();
+                 
+                 System.out.println("Digite o nome da linguagem:");
+                 String linguagemSerie = scanner.nextLine();
+
+                 System.out.println("Digite a data de lançamento no formato dd/MM/yyyy:");
+                 String dataLancamento = scanner.nextLine();
+
+                 System.out.println("Digite o número de episodios:");
+                 int qtdEpisodios = scanner.nextInt();
+              
+
+                 Serie serie = new Serie(nome, generoSerie , linguagemSerie , dataLancamento, qtdEpisodios);
+                 plataforma.adicionarSerie(serie);
+                 System.out.println("Série adicionada com sucesso!");
+                 break;
+
+             case 2:
+                
+                 System.out.println("Digite o nome do filme:");
+                 String nomeFilme = scanner.nextLine();
+                
+                 
+                 System.out.println("Digite o nome do genero:");
+                 String generoFilme = scanner.nextLine();
+                
+                 
+                 System.out.println("Digite o nome do linguagem:");
+                 String linguaFilme = scanner.nextLine();
+                
+                 
+                 System.out.println("Digite a data de lançamento no formato dd/MM/yyyy:");
+                 String dataLancamentoFilme = scanner.nextLine();
+
+                 System.out.println("Digite a duração do filme:");
+                 int duracao = scanner.nextInt();
+                 
+
+                 Filme filme = new Filme(nomeFilme, generoFilme, linguaFilme,dataLancamentoFilme, duracao);
+                 plataforma.adicionarFilme(filme);
+                 System.out.println("Filme adicionado com sucesso!");
+                 break;
+             default:
+                 System.out.println("Opção inválida. Tente novamente.");
+         }
+     }
+
 
 	private static void salvaArquivos() {
 		try (FileWriter clientes = new FileWriter("clientes.csv", false)) {
