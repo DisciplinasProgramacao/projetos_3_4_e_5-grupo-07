@@ -15,9 +15,9 @@
 | Como um administrador, eu quero   | adicionar e gerenciar os filme e serie que estão na plataforma         | para melhor cuidar da mesma      |    Em andamento   |   Philippe   |
 | Como um administrador, eu quero   | gerenciar clientes         | para ver saber se estão cadastrados na plataforma      |    Finalizado   |    Philippe   |
 | Como um administrador, eu quero   | registrar a audiencia         | para ver quantas pessoas assistiram as midias      |    FInalizado   |    João Francisco   |
-| Como um administrador, eu quero      | cadastrar novos clientes       | para  novas pessoas acessarem a página    |  ---    |   --   |
-| Como um administrador, eu quero      | cadastrar novos filmes       | para  terem novos filmes cadastrados    |  ---    |   --   |
-| Como um administrador, eu quero      | cadastrar novos serie       | para  terem novas series cadastrados    |  ---    |   --   |
+| Como um administrador, eu quero      | cadastrar novos clientes       | para  novas pessoas acessarem a página    |  Em andamento    |   --   |
+| Como um administrador, eu quero      | cadastrar novos filmes       | para  terem novos filmes cadastrados    |  Em andamento    |   --   |
+| Como um administrador, eu quero      | cadastrar novos serie       | para  terem novas series cadastrados    |  Em andamento    |   --   |
 
 
 
