@@ -17,7 +17,7 @@
 | Como um administrador, eu quero      | cadastrar novos clientes       | para  novas pessoas acessarem a página    |  Finalizada    |   Diogo   |
 | Como um administrador, eu quero      | cadastrar novos filmes       | para  terem novos filmes cadastrados    |  Em andamento    |   João Francisco   |
 | Como um administrador, eu quero      | cadastrar novos serie       | para  terem novas series cadastrados    |  Em andamento    |   Saulo   |
-
+| Como um administrador, eu quero      | utilizar menu        | para  trazer dinamica a pagina    |  Em andamento    |   João Francisco   |
 
 
 
