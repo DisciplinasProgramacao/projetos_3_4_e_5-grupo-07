@@ -1,9 +1,12 @@
 package projeto;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
-
 
 public class App {
 	static Scanner scanner = new Scanner(System.in);
@@ -56,21 +59,45 @@ public class App {
     private static void cadastrarMidia(PlataformaStreaming plataforma) {
     }
 
-	public static void salvaArquivos() {
-		try (FileWriter filmes = new FileWriter("clientes.csv", false)) {
-			filmes.write(plataforma.salvarClientes());
+	private static void salvaArquivos() {
+		try (FileWriter clientes = new FileWriter("clientes.csv", false)) {
+			clientes.write(plataforma.salvarClientes());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		try (FileWriter filmes = new FileWriter("series.csv", false)) {
-			filmes.write(plataforma.salvarSeries());
+		try (FileWriter series = new FileWriter("series.csv", false)) {
+			series.write(plataforma.salvarSeries());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		try (FileWriter filmes = new FileWriter("filmes.csv", false)) {
-			filmes.write(plataforma.salvarFilmes());
+		try (FileWriter arquivoclientes = new FileWriter("filmes.csv", false)) {
+			arquivoclientes.write(plataforma.salvarFilmes());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private static void carregaArquivos() {
+		try ( Scanner arquivofilmes = new Scanner(new File("filmes.csv")) ) {
+			List<String> filmes = new LinkedList<String>();
+			while (arquivofilmes.hasNextLine()) {
+				filmes.add(arquivofilmes.nextLine());
+			}
+			plataforma.carregarFilmes(filmes);
+		} catch (FileNotFoundException e) {}
+		try ( Scanner arquivoseries = new Scanner(new File("series.csv")) ) {
+			List<String> series = new LinkedList<String>();
+			while (arquivoseries.hasNextLine()) {
+				series.add(arquivoseries.nextLine());
+			}
+			plataforma.carregarSeries(series);
+		} catch (FileNotFoundException e) {}
+		try ( Scanner arquivoclientes = new Scanner(new File("clientes.csv")) ) {
+			List<String> clientes = new LinkedList<String>();
+			while (arquivoclientes.hasNextLine()) {
+				clientes.add(arquivoclientes.nextLine());
+			}
+			plataforma.carregarClientes(clientes);
+		} catch (FileNotFoundException e) {}
 	}
 }
