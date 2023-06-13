@@ -78,26 +78,34 @@ public class Cliente {
 	}
 	/**
 	 * registra uma audiência na série
-	 * @param serie
+	 * @param midia
 	 */
-	public void registrarAudiencia(Midia serie) {
-		serie.registrarAudiencia();
+	public void registrarAudiencia(Midia midia) {
+		midia.registrarAudiencia();
 	}
 	/**
 	 * registra uma nota para a série
-	 * @param serie
+	 * @param midia
 	 * @param nota
 	 */
-	public void avalia(Midia serie, int nota, String comentario) {
+	public void avalia(Midia midia, int nota, String comentario) {
+		if (avaliacoes.containsKey(midia))
+			return;
+		if (!this.isEspecialista()) {
+			this.avalia(midia, nota);
+			return;
+		}
 		Avaliacao avaliacao = new Avaliacao(nota, comentario);
-		avaliacoes.put(serie, avaliacao);
-		serie.avalia(this, avaliacao);
+		avaliacoes.put(midia, avaliacao);
+		midia.avalia(this, avaliacao);
 	}
 	
-	public void avalia(Midia serie, int nota) {
+	public void avalia(Midia midia, int nota) {
+		if (avaliacoes.containsKey(midia))
+			return;
 		Avaliacao avaliacao = new Avaliacao(nota);
-		avaliacoes.put(serie, avaliacao);
-		serie.avalia(this, avaliacao);
+		avaliacoes.put(midia, avaliacao);
+		midia.avalia(this, avaliacao);
 	}
 
 	public String getNome() {
