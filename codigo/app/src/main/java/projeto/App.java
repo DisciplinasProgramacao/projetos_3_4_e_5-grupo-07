@@ -12,6 +12,11 @@ import projeto.enums.Genero;
 import projeto.enums.Idioma;
 
 public class App {
+	private enum TipoMidia {
+		Filme, Serie, All;
+	}
+
+
 	static Scanner scanner = new Scanner(System.in);
     static PlataformaStreaming plataforma = new PlataformaStreaming(); 
     
@@ -91,7 +96,7 @@ public class App {
               
 
                  Serie serie = new Serie(nome, Genero.fromString(generoSerie), Idioma.fromString(linguagemSerie), dataLancamento, qtdEpisodios);
-                 plataforma.adicionarSerie(serie);
+                 plataforma.adicionarMidia(serie);
                  System.out.println("Série adicionada com sucesso!");
                  break;
 
@@ -112,12 +117,8 @@ public class App {
                  System.out.println("Digite a data de lançamento no formato dd/MM/yyyy:");
                  String dataLancamentoFilme = scanner.nextLine();
 
-                 System.out.println("Digite a duração do filme:");
-                 int duracao = scanner.nextInt();
-                 
-
                  Filme filme = new Filme(nomeFilme, Genero.fromString(generoFilme), Idioma.fromString(linguaFilme),dataLancamentoFilme);
-                 plataforma.adicionarFilme(filme);
+                 plataforma.adicionarMidia(filme);
                  System.out.println("Filme adicionado com sucesso!");
                  break;
              default:
@@ -129,19 +130,13 @@ public class App {
 	private static void salvaArquivos() {
 		try (FileWriter clientes = new FileWriter("clientes.csv", false)) {
 			clientes.write(plataforma.salvarClientes());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		} catch (IOException e) {}
 		try (FileWriter series = new FileWriter("series.csv", false)) {
 			series.write(plataforma.salvarSeries());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		} catch (IOException e) {}
 		try (FileWriter arquivoclientes = new FileWriter("filmes.csv", false)) {
 			arquivoclientes.write(plataforma.salvarFilmes());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		} catch (IOException e) {}
 	}
 
 	private static void carregaArquivos() {
@@ -166,5 +161,9 @@ public class App {
 			}
 			plataforma.carregarClientes(clientes);
 		} catch (FileNotFoundException e) {}
+	}
+
+	private static Midia selecionaMidia(TipoMidia tipo) {
+		return null;
 	}
 }
