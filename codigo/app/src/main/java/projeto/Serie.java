@@ -41,4 +41,9 @@ public class Serie extends Midia {
 		return serie;
 	}
 
+	@Override
+	public String toString() {
+		return super.toString() + " - " + quantidadeDeEpisodios + "eps";
+	}
+
 }

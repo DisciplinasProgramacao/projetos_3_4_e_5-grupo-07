@@ -78,4 +78,9 @@ public abstract class Midia {
 	public static Midia carregar(String linhacsv) {
 		return null;
 	}
+
+	@Override
+	public String toString() {
+		return nome + " - " + genero + " - " + idioma + " - Lançamento: " + dataLancamento ;
+	}
 }
