@@ -36,10 +36,6 @@ public class PlataformaStreaming{
 		return new ArrayList<>(midias.values());
 	}
 
-	public List<Cliente> getClientes(){
-		return new ArrayList<>(clientes.values());
-	}
-
 	public void setClientes (final HashMap<String, Cliente> clientes){
 		this.clientes = clientes;
 	}
