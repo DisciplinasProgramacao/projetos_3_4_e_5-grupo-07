@@ -52,6 +52,10 @@ public class PlataformaStreaming{
 		return clienteAtual != null;
 	}
 
+	public void logout() {
+		clienteAtual = null;
+	}
+
 	public boolean estaLogado() {
 		return clienteAtual != null;
 	}
