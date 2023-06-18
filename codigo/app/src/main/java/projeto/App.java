@@ -179,40 +179,48 @@ public class App {
 		}
 	}
 
-	private static Midia selecionaMidia() {
-		List<Midia> midias = plataforma.getMidias();
-		apresentaMidia(midias);
+	private static Midia selecionaMidia(List<? extends Midia> midias) {
+		apresentaMidias(midias);
 		System.out.println("Mídia Selecionada: ");
-		return midias.get(scanner.nextInt());
+		return midias.get(scanner.nextInt() - 1);
 	}
 
-	private static Serie selecionaSerie() {
-		List<Serie> series = plataforma.getMidias().stream()
-		.filter(Serie.class::isInstance)
-		.map(Serie.class::cast).toList();
-		apresentaMidia(series);
-		System.out.println("Série Selecionada: ");
-		return series.get(scanner.nextInt());
-	}
-
-	private static Filme selecionaFilme() {
-		List<Filme> filmes = plataforma.getMidias().stream()
-		.filter(Filme.class::isInstance)
-		.map(Filme.class::cast).toList();
-		apresentaMidia(filmes);
-		System.out.println("Filme Selecionado: ");
-		return filmes.get(scanner.nextInt());
-	}
-
-	private static void apresentaMidia(List<? extends Midia> lista) {
+	private static void apresentaMidias(List<? extends Midia> lista) {
 		IntStream.range(0, lista.size())
 			.forEach(i -> {
 				Midia midia = lista.get(i);
-				System.out.println(i + ": " + midia);
+				System.out.println((i + 1) + ": " + midia);
 			});
 	}
 
 	private static void menuLogado() {
-
+		Cliente cliente = plataforma.getClienteAtual();
+		while (true) {
+			System.out.println("Bem vindo " + cliente.getNome());
+			System.out.println("1: Ver Mídias");
+			System.out.println("2: Ver minha lista");
+			System.out.println("3: Ver histórico");
+			System.out.println("0: Logout");
+			int opcao = scanner.nextInt();
+			switch (opcao) {
+				case 1:
+					System.out.println("Mídias");
+					selecionaMidia(cliente.getListaParaVer());
+					break;
+				case 2:
+					System.out.println("Minha Lista:");
+					selecionaMidia(cliente.getListaParaVer());
+					break;
+				case 3:
+					System.out.println("Histórico:");
+					selecionaMidia(cliente.getListaJaVista());
+					break;
+				case 0:
+					plataforma.logout();
+					return;
+				default:
+					System.out.println("Opção inválida");
+			}
+		}
 	}
 }
