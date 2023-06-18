@@ -7,16 +7,12 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 import projeto.enums.Genero;
 import projeto.enums.Idioma;
 
 public class App {
-	private enum TipoMidia {
-		Filme, Serie, All;
-	}
-
-
 	static Scanner scanner = new Scanner(System.in);
     static PlataformaStreaming plataforma = new PlataformaStreaming(); 
     
@@ -163,7 +159,40 @@ public class App {
 		} catch (FileNotFoundException e) {}
 	}
 
-	private static Midia selecionaMidia(TipoMidia tipo) {
-		return null;
+	private static Midia selecionaMidia() {
+		List<Midia> midias = plataforma.getMidias();
+		IntStream.range(0, midias.size())
+			.forEach(i -> {
+				Midia midia = midias.get(i);
+				System.out.println(i + ": " + midia);
+			});
+		System.out.println("Mídia Selecionada: ");
+		return midias.get(scanner.nextInt());
+	}
+
+	private static Serie selecionaSerie() {
+		List<Serie> series = plataforma.getMidias().stream()
+		.filter(Serie.class::isInstance)
+		.map(Serie.class::cast).toList();
+		IntStream.range(0, series.size())
+			.forEach(i -> {
+				Midia serie = series.get(i);
+				System.out.println(i + ": " + serie);
+			});
+		System.out.println("Série Selecionada: ");
+		return series.get(scanner.nextInt());
+	}
+
+	private static Filme selecionaFilme() {
+		List<Filme> filmes = plataforma.getMidias().stream()
+		.filter(Filme.class::isInstance)
+		.map(Filme.class::cast).toList();
+		IntStream.range(0, filmes.size())
+			.forEach(i -> {
+				Midia filme = filmes.get(i);
+				System.out.println(i + ": " + filme);
+			});
+		System.out.println("Filme Selecionado: ");
+		return filmes.get(scanner.nextInt());
 	}
 }
