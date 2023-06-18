@@ -2,24 +2,24 @@ package projeto;
 
 public class Avaliacao {
 
-	private float nota;
+	private double nota;
 	private String comentario;
 	private String data;
 	
-	public Avaliacao(float nota, String comentario) {
+	public Avaliacao(double nota, String comentario) {
 		this.nota = nota;
 		this.comentario = comentario;
 	}
 
-	public Avaliacao(float nota) {
+	public Avaliacao(double nota) {
 		this.nota = nota;
 	}
 
-	public float getNota() {
+	public double getNota() {
 		return nota;
 	}
 
-	public void setNota(float nota) {
+	public void setNota(double nota) {
 		this.nota = nota;
 	}
 
