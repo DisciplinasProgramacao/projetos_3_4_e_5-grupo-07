@@ -31,12 +31,13 @@ public class App {
 
             switch (opcao) {
 				case 1:
+					Login();
 					break;
                 case 2:
-                    cadastrarCliente(plataforma);
+                    cadastrarCliente();
                     break;
                 case 3:
-                    cadastrarMidia(plataforma);
+                    cadastrarMidia();
                     break;
                 case 0:
                     System.out.println("Saindo...");
@@ -48,7 +49,43 @@ public class App {
         }
     }
 
-    private static void cadastrarCliente(PlataformaStreaming plataforma) {
+	private static void salvaArquivos() {
+		try (FileWriter clientes = new FileWriter("clientes.csv", false)) {
+			clientes.write(plataforma.salvarClientes());
+		} catch (IOException e) {}
+		try (FileWriter series = new FileWriter("series.csv", false)) {
+			series.write(plataforma.salvarSeries());
+		} catch (IOException e) {}
+		try (FileWriter arquivoclientes = new FileWriter("filmes.csv", false)) {
+			arquivoclientes.write(plataforma.salvarFilmes());
+		} catch (IOException e) {}
+	}
+
+	private static void carregaArquivos() {
+		try ( Scanner arquivofilmes = new Scanner(new File("filmes.csv")) ) {
+			List<String> filmes = new LinkedList<String>();
+			while (arquivofilmes.hasNextLine()) {
+				filmes.add(arquivofilmes.nextLine());
+			}
+			plataforma.carregarFilmes(filmes);
+		} catch (FileNotFoundException e) {}
+		try ( Scanner arquivoseries = new Scanner(new File("series.csv")) ) {
+			List<String> series = new LinkedList<String>();
+			while (arquivoseries.hasNextLine()) {
+				series.add(arquivoseries.nextLine());
+			}
+			plataforma.carregarSeries(series);
+		} catch (FileNotFoundException e) {}
+		try ( Scanner arquivoclientes = new Scanner(new File("clientes.csv")) ) {
+			List<String> clientes = new LinkedList<String>();
+			while (arquivoclientes.hasNextLine()) {
+				clientes.add(arquivoclientes.nextLine());
+			}
+			plataforma.carregarClientes(clientes);
+		} catch (FileNotFoundException e) {}
+	}
+
+    private static void cadastrarCliente() {
         System.out.println("Digite o nome do cliente:");
         String nome = scanner.nextLine();
 
@@ -61,7 +98,7 @@ public class App {
 
     }
 
-   private static void cadastrarMidia(PlataformaStreaming plataforma) {
+   private static void cadastrarMidia() {
     	
     	 System.out.println("Escolha o tipo de mídia:");
          System.out.println("1. Série");
@@ -120,52 +157,31 @@ public class App {
              default:
                  System.out.println("Opção inválida. Tente novamente.");
          }
-     }
+    }
 
-
-	private static void salvaArquivos() {
-		try (FileWriter clientes = new FileWriter("clientes.csv", false)) {
-			clientes.write(plataforma.salvarClientes());
-		} catch (IOException e) {}
-		try (FileWriter series = new FileWriter("series.csv", false)) {
-			series.write(plataforma.salvarSeries());
-		} catch (IOException e) {}
-		try (FileWriter arquivoclientes = new FileWriter("filmes.csv", false)) {
-			arquivoclientes.write(plataforma.salvarFilmes());
-		} catch (IOException e) {}
-	}
-
-	private static void carregaArquivos() {
-		try ( Scanner arquivofilmes = new Scanner(new File("filmes.csv")) ) {
-			List<String> filmes = new LinkedList<String>();
-			while (arquivofilmes.hasNextLine()) {
-				filmes.add(arquivofilmes.nextLine());
+	private static void Login() {
+		while (true) {
+			System.out.print("Informe o usuário: ");
+			String usuario = scanner.nextLine();
+			System.out.print("Informe a Senha: ");
+			String senha = scanner.nextLine();
+			if (plataforma.login(usuario, senha)) {
+				menuLogado();
+			} else {
+				System.out.println("Usuário ou senha incorretos");
+				System.out.print("Selecione 0 para sair e 1 para tentar denovo: ");
+				if (scanner.nextInt() == 0) {
+					break;
+				}
+				continue;
 			}
-			plataforma.carregarFilmes(filmes);
-		} catch (FileNotFoundException e) {}
-		try ( Scanner arquivoseries = new Scanner(new File("series.csv")) ) {
-			List<String> series = new LinkedList<String>();
-			while (arquivoseries.hasNextLine()) {
-				series.add(arquivoseries.nextLine());
-			}
-			plataforma.carregarSeries(series);
-		} catch (FileNotFoundException e) {}
-		try ( Scanner arquivoclientes = new Scanner(new File("clientes.csv")) ) {
-			List<String> clientes = new LinkedList<String>();
-			while (arquivoclientes.hasNextLine()) {
-				clientes.add(arquivoclientes.nextLine());
-			}
-			plataforma.carregarClientes(clientes);
-		} catch (FileNotFoundException e) {}
+			break;
+		}
 	}
 
 	private static Midia selecionaMidia() {
 		List<Midia> midias = plataforma.getMidias();
-		IntStream.range(0, midias.size())
-			.forEach(i -> {
-				Midia midia = midias.get(i);
-				System.out.println(i + ": " + midia);
-			});
+		apresentaMidia(midias);
 		System.out.println("Mídia Selecionada: ");
 		return midias.get(scanner.nextInt());
 	}
@@ -174,11 +190,7 @@ public class App {
 		List<Serie> series = plataforma.getMidias().stream()
 		.filter(Serie.class::isInstance)
 		.map(Serie.class::cast).toList();
-		IntStream.range(0, series.size())
-			.forEach(i -> {
-				Midia serie = series.get(i);
-				System.out.println(i + ": " + serie);
-			});
+		apresentaMidia(series);
 		System.out.println("Série Selecionada: ");
 		return series.get(scanner.nextInt());
 	}
@@ -187,12 +199,20 @@ public class App {
 		List<Filme> filmes = plataforma.getMidias().stream()
 		.filter(Filme.class::isInstance)
 		.map(Filme.class::cast).toList();
-		IntStream.range(0, filmes.size())
-			.forEach(i -> {
-				Midia filme = filmes.get(i);
-				System.out.println(i + ": " + filme);
-			});
+		apresentaMidia(filmes);
 		System.out.println("Filme Selecionado: ");
 		return filmes.get(scanner.nextInt());
+	}
+
+	private static void apresentaMidia(List<? extends Midia> lista) {
+		IntStream.range(0, lista.size())
+			.forEach(i -> {
+				Midia midia = lista.get(i);
+				System.out.println(i + ": " + midia);
+			});
+	}
+
+	private static void menuLogado() {
+
 	}
 }
