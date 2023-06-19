@@ -67,16 +67,18 @@ public abstract class Midia {
 		this.audiencia = audiencia;
 	}
 
+	public double getMediaAvaliacoes() {
+		return avaliacoes.values().stream()
+		.mapToDouble(Avaliacao::getNota)
+		.average().orElse(0);
+	}
+
 	public void avalia(Cliente cliente, Avaliacao avaliacao) {
 		avaliacoes.put(cliente, avaliacao);
 	}
 
 	public String salvar() {
 		return nome + "," + audiencia + "," + genero + "," + idioma + "," + dataLancamento;
-	}
-
-	public static Midia carregar(String linhacsv) {
-		return null;
 	}
 
 	@Override
