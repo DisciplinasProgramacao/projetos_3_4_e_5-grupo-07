@@ -133,7 +133,7 @@ public class Cliente {
 	}
 
 	public boolean login(String nome, String senha) {
-		return this.nome == nome && this.senha == senha;
+		return this.nome.equals(nome) && this.senha.equals(senha);
 	}
 
 	public String salvar() {
