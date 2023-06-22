@@ -143,7 +143,7 @@ public class Cliente {
 	public static Cliente carregar(String linhacsv) {
 		String[] atributos = linhacsv.split(",");
 		String nome = atributos[0];
-		String senha = atributos[4];
+		String senha = atributos[1];
 		return new Cliente(nome, senha); 
 	}
 }
