@@ -18,6 +18,24 @@ class FilmeTest {
         assertEquals("Filme Teste", nome);
     }
 
+    @Test
+    void getGeneroTest() {
+        String nome = filme.getGenero();
+        assertEquals("Romance", genero);
+    }
+
+    @Test
+    void getIdiomaTest() {
+        String idioma = filme.getIdioma();
+        assertEquals("Portugues", idioma);
+    }
+
+    @Test
+    void getIdiomaTest() {
+        String dataLancamento = filme.getdataLancamento();
+        assertEquals(2010, dataLancamento);
+    }
+
     
     @Test
     void toStringTest() {
