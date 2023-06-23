@@ -15,25 +15,24 @@ import projeto.exceptions.MidiaJaAvaliada;
 public class Cliente {
 	private String nome;
 	private String senha;
-	private List<Midia> listaParaVer;
+	private List<Midia> historico;
 	private List<Midia> listaJaVista;
-    private Map<Midia, Avaliacao> avaliacoes;
+    protected Map<Midia, Avaliacao> avaliacoes;
 
 	public Cliente(String nome, String senha) {
 		this.nome = nome;
 		this.senha = senha;
-		listaParaVer = new ArrayList<Midia>();
+		historico = new ArrayList<Midia>();
 		listaJaVista = new ArrayList<Midia>();
 		avaliacoes = new HashMap<Midia, Avaliacao>();
 	}
-	
 
 	/**
 	 * Adiciona série a lista
 	 * @param serie
 	 */
 	public void adicionarNaLista(Midia serie) {
-		listaParaVer.add(serie);
+		historico.add(serie);
 	}
 
 	/**
@@ -41,7 +40,7 @@ public class Cliente {
 	 * @param serie
 	 */
 	public void retirarDaLista(Midia serie) {
-		listaParaVer.remove(serie);
+		historico.remove(serie);
 	}
 
 	/**
@@ -50,7 +49,7 @@ public class Cliente {
 	 * @return
 	 */
 	public List<Midia> filtrarPorGenero(Genero genero) {
-		return listaParaVer.stream()
+		return historico.stream()
 			.filter(serie -> serie.getGenero().equals(genero))
 			.toList();
 	}
@@ -61,7 +60,7 @@ public class Cliente {
 	 * @return
 	 */
 	public List<Midia> filtrarPorIdioma(Idioma idioma) {
-		return listaParaVer.stream()
+		return historico.stream()
 			.filter(serie -> serie.getIdioma().equals(idioma))
 			.toList();
 	}
@@ -71,7 +70,7 @@ public class Cliente {
 	 * @return
 	 */
 	public List<Serie> filtrarPorQtdEpisodios(int nEpisodios) {
-		return listaParaVer.stream()
+		return historico.stream()
 			.filter(Serie.class::isInstance)
 			.map(Serie.class::cast)
 			.filter(serie -> serie.getQuantidadeDeEpisodios() == nEpisodios)
@@ -113,12 +112,12 @@ public class Cliente {
 		return nome;
 	}
 
-	public List<Midia> getListaParaVer() {
-		return listaParaVer;
+	public List<Midia> getHistorico() {
+		return historico;
 	}
 
-	public void setListaParaVer(List<Midia> listaParaVer) {
-		this.listaParaVer = listaParaVer;
+	protected void setHistorico(List<Midia> listaParaVer) {
+		this.historico = listaParaVer;
 	}
 
 	public List<Midia> getListaJaVista() {
@@ -147,5 +146,4 @@ public class Cliente {
 		String senha = atributos[1];
 		return new Cliente(nome, senha); 
 	}
-
 }
