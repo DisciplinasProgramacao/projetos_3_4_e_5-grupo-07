@@ -9,7 +9,7 @@ public class Filme extends Midia {
 	}
 
 	public static Filme carregar(String linhacsv) {
-		String[] atributos = linhacsv.split(",");
+		String[] atributos = linhacsv.split(";");
 		String nome = atributos[0];
 		int audiencia = Integer.parseInt(atributos[1]);
 		Genero genero = Genero.fromString(atributos[2]);
