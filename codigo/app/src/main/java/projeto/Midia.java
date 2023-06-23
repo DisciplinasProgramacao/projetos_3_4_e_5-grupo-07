@@ -4,6 +4,7 @@ import java.util.Map;
 
 import projeto.enums.Genero;
 import projeto.enums.Idioma;
+import projeto.exceptions.MidiaJaAvaliada;
 
 /**
  * Midia
@@ -73,7 +74,10 @@ public abstract class Midia {
 		.average().orElse(0);
 	}
 
-	public void avalia(String cliente, Avaliacao avaliacao) {
+	public void avalia(String cliente, Avaliacao avaliacao) throws MidiaJaAvaliada {
+		if (avaliacoes.containsKey(cliente)) {
+			throw new MidiaJaAvaliada();
+		}
 		avaliacoes.put(cliente, avaliacao);
 	}
 

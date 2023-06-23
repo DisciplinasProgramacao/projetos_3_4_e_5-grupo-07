@@ -7,6 +7,7 @@ import java.util.Map;
 
 import projeto.enums.Genero;
 import projeto.enums.Idioma;
+import projeto.exceptions.MidiaJaAvaliada;
 
 /**
  * Cliente
@@ -88,7 +89,7 @@ public class Cliente {
 	 * @param midia
 	 * @param nota
 	 */
-	public void avalia(Midia midia, int nota, String comentario) {
+	public void avalia(Midia midia, int nota, String comentario) throws MidiaJaAvaliada {
 		if (avaliacoes.containsKey(midia))
 			return;
 		if (!this.isEspecialista()) {
@@ -100,7 +101,7 @@ public class Cliente {
 		midia.avalia(this.getNome(), avaliacao);
 	}
 	
-	public void avalia(Midia midia, int nota) {
+	public void avalia(Midia midia, int nota) throws MidiaJaAvaliada {
 		if (avaliacoes.containsKey(midia))
 			return;
 		Avaliacao avaliacao = new Avaliacao(nota);
@@ -146,4 +147,5 @@ public class Cliente {
 		String senha = atributos[1];
 		return new Cliente(nome, senha); 
 	}
+
 }
