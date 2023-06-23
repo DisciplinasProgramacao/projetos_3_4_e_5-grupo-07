@@ -82,11 +82,12 @@ public abstract class Midia {
 	}
 
 	public String salvar() {
-		return nome + "," + audiencia + "," + genero + "," + idioma + "," + dataLancamento;
+		return nome + ";" + audiencia + ";" + genero + ";" + idioma + ";" + dataLancamento;
 	}
 
 	@Override
 	public String toString() {
 		return nome + " - " + genero + " - " + idioma + " - Lançamento: " + dataLancamento ;
 	}
+
 }

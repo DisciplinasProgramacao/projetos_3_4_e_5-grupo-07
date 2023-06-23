@@ -25,11 +25,11 @@ public class Serie extends Midia {
 
 	@Override
 	public String salvar() {
-		return super.salvar() + "," + quantidadeDeEpisodios;
+		return super.salvar() + ";" + quantidadeDeEpisodios;
 	}
 
 	public static Serie carregar(String linhacsv) {
-		String[] atributos = linhacsv.split(",");
+		String[] atributos = linhacsv.split(";");
 		String nome = atributos[0];
 		int audiencia = Integer.parseInt(atributos[1]);
 		Genero genero = Genero.fromString(atributos[2]);

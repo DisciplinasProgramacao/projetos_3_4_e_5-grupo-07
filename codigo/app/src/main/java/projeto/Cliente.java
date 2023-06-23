@@ -138,7 +138,7 @@ public class Cliente {
 	}
 
 	public String salvar() {
-		return nome + "," + senha;
+		return nome + ";" + senha;
 	}
 
 	public static Cliente carregar(String linhacsv) {
