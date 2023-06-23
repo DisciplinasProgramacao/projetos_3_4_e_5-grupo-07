@@ -193,7 +193,7 @@ public class App {
 			}
 			break;
 		}
-		menuMidias(midias.get(opcao - 1));
+		menuMidia(midias.get(opcao - 1));
 	}
 
 	private static void apresentaMidias(List<? extends Midia> lista) {
@@ -216,15 +216,15 @@ public class App {
 			switch (opcao) {
 				case 1:
 					System.out.println("Mídias");
-					selecionaMidia(cliente.getListaParaVer());
+					selecionaMidia(plataforma.getMidias());
 					break;
 				case 2:
 					System.out.println("Minha Lista:");
-					selecionaMidia(cliente.getListaParaVer());
-					break;
+					selecionaMidia(cliente.getHistorico());
+				break;
 				case 3:
 					System.out.println("Histórico:");
-					selecionaMidia(cliente.getListaJaVista());
+					selecionaMidia(cliente.getMinhaLista());
 					break;
 				case 0:
 					plataforma.logout();
@@ -235,17 +235,17 @@ public class App {
 		}
 	}
 
-	private static void menuMidias(Midia midia) {
+	private static void menuMidia(Midia midia) {
 		if (midia instanceof Serie) {
-			menuSeries((Serie) midia);
+			MenuSerie((Serie) midia);
 		} else if (midia instanceof Filme) {
-			menuFilmes((Filme) midia);
+			menuFilme((Filme) midia);
 		}
 	}
 
-	private static void menuSeries(Serie serie) {
+	private static void MenuSerie(Serie serie) {
 	}
 
-	private static void menuFilmes(Filme filme) {
+	private static void menuFilme(Filme filme) {
 	}
 }
