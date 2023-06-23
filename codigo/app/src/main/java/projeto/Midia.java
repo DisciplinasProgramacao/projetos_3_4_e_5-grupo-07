@@ -14,7 +14,7 @@ public abstract class Midia {
     private Genero genero;
     private Idioma idioma;
 	public String dataLancamento;
-	private Map<Cliente, Avaliacao> avaliacoes;
+	private Map<String, Avaliacao> avaliacoes;
 
 	public Midia(String nome, Genero genero, Idioma idioma, String dataLancamento) {
 		this.nome = nome;
@@ -73,7 +73,7 @@ public abstract class Midia {
 		.average().orElse(0);
 	}
 
-	public void avalia(Cliente cliente, Avaliacao avaliacao) {
+	public void avalia(String cliente, Avaliacao avaliacao) {
 		avaliacoes.put(cliente, avaliacao);
 	}
 

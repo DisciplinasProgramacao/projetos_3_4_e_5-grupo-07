@@ -97,7 +97,7 @@ public class Cliente {
 		}
 		Avaliacao avaliacao = new Avaliacao(nota, comentario);
 		avaliacoes.put(midia, avaliacao);
-		midia.avalia(this, avaliacao);
+		midia.avalia(this.getNome(), avaliacao);
 	}
 	
 	public void avalia(Midia midia, int nota) {
@@ -105,7 +105,7 @@ public class Cliente {
 			return;
 		Avaliacao avaliacao = new Avaliacao(nota);
 		avaliacoes.put(midia, avaliacao);
-		midia.avalia(this, avaliacao);
+		midia.avalia(this.getNome(), avaliacao);
 	}
 
 	public String getNome() {
