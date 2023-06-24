@@ -109,6 +109,12 @@ public class PlataformaStreaming{
 		.collect(Collectors.joining("\n"));
 	}
 
+	public String salvarLancamentos() {
+		return lancamentos.values().parallelStream()
+		.map(Lancamento::salvar)
+		.collect(Collectors.joining("\n"));
+	}
+
 	public String salvarClientes() {
 		return clientes.values().parallelStream()
 			.map(Cliente::salvar)
@@ -138,6 +144,13 @@ public class PlataformaStreaming{
 		linhascsv.parallelStream().forEach(linha -> {
 			Filme filme = Filme.carregar(linha);
 			midias.put(filme.getNome(), filme);
+		});
+	}
+
+	public void carregarLancamentos(List<String> linhascsv) {
+		linhascsv.parallelStream().forEach(linha -> {
+			Lancamento lancamento = Lancamento.carregar(linha);
+			lancamentos.put(lancamento.getMidia().getNome(), lancamento);
 		});
 	}
 
