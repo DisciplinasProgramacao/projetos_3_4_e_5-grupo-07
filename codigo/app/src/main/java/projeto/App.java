@@ -346,4 +346,35 @@ public class App {
 			return valores[opcao];
 		}
 	}
+
+	private static void verMidias() {
+		System.out.println("Selecione o tipo de filtro para a mídia");
+		System.out.println("1: Genero");
+		System.out.println("2: Idioma");
+		System.out.println("3: Quantidade de Episódios(Somente séries)");
+		System.out.println("0: Mostrar tudo");
+		int opcao;
+		while (true) {
+			opcao = scanner.nextInt();
+			switch (opcao) {
+				case 1:
+					selecionaMidia(plataforma.filtrarPorGenero(selecionaEnum("Selecione o genero", Genero.class).toString()));
+					break;
+				case 2:
+					selecionaMidia(plataforma.filtrarPorIdioma(selecionaEnum("Selecione o idioma", Idioma.class).toString()));
+					break;
+				case 3:
+					System.out.print("Digite o número de episódios: ");
+					selecionaMidia(plataforma.filtrarPorQtdEpisodios(scanner.nextInt()));
+					break;
+				case 0:
+					selecionaMidia(plataforma.getMidias());
+					break;
+				default:
+					System.out.println("Opção inválida");
+					continue;
+			}
+			break;
+		}
+	}
 }
