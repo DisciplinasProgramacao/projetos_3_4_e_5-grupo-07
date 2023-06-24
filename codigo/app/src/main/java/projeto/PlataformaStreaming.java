@@ -56,6 +56,10 @@ public class PlataformaStreaming{
 		.map(Lancamento::getMidia).toList();
 	}
 
+	public List<Trailer> getTrailers(){
+		return new ArrayList<>(trailers.values());
+	}
+
 	public void setClientes (final HashMap<String, Cliente> clientes){
 		this.clientes = clientes;
 	}
@@ -138,6 +142,12 @@ public class PlataformaStreaming{
 		.collect(Collectors.joining("\n"));
 	}
 
+	public String salvarTrailers() {
+		return trailers.values().parallelStream()
+		.map(Trailer::salvar)
+		.collect(Collectors.joining("\n"));
+	}
+
 	public void carregarSeries(List<String> linhascsv) {
 		linhascsv.parallelStream().forEach(linha -> {
 			Serie serie = Serie.carregar(linha);
@@ -191,6 +201,17 @@ public class PlataformaStreaming{
 				.forEach(nomeCliente -> {
 					midia.assistir(nomeCliente);
 				});
+		});
+	}
+
+	public void carregarTrailer(List<String> linhascsv) {
+		Map<String, Midia> midias = new HashMap<>();
+		midias.putAll(this.midias);
+		midias.putAll(this.lancamentos.entrySet().parallelStream()
+			.collect(Collectors.toMap(Map.Entry::getKey, entry -> entry.getValue().getMidia())));
+		linhascsv.parallelStream().forEach(linha -> {
+			Midia midia = midias.get(linha);
+			this.adicionarTrailer(new Trailer(midia));
 		});
 	}
 }

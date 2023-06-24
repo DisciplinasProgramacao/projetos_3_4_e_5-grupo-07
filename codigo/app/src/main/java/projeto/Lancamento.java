@@ -17,7 +17,7 @@ public class Lancamento {
 	}
 
 	public String salvar() {
-		return midia.getClass().toString() + ";" + midia.salvar();
+		return midia.getClass().getName() + ";" + midia.salvar();
 	}
 	
 	public static Lancamento carregar(String linhacsv) {
@@ -26,9 +26,9 @@ public class Lancamento {
 		StringJoiner arg = new StringJoiner(";");
 		for (int i = 1; i < linha.length; i++)
 			arg.add(linha[i]);
-		if (linha[0].equals(Serie.class.toString())) {
+		if (linha[0].equals(Serie.class.getName())) {
 			midia = Serie.carregar(arg.toString());
-		} else if (linha[0].equals(Filme.class.toString())) {
+		} else if (linha[0].equals(Filme.class.getName())) {
 			midia = Filme.carregar(arg.toString());
 		} else {
 			return null;

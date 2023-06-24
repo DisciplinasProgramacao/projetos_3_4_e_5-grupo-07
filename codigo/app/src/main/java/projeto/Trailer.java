@@ -23,4 +23,13 @@ public class Trailer {
 	public Genero getGeneroMidia() {
 		return midia.getGenero();
 	}
+
+	public String salvar() {
+		return midia.getNome();
+	}
+
+	@Override
+	public String toString() {
+		return "Trailer de " + midia.getNome(); 
+	}
 }

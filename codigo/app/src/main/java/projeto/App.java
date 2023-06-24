@@ -1,15 +1,12 @@
 package projeto;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.IntStream;
-
-import com.google.common.collect.Lists;
 
 import projeto.enums.Genero;
 import projeto.enums.Idioma;
@@ -25,8 +22,9 @@ public class App {
 			while (true) {
 				System.out.println("Menu:");
 				System.out.println("1. Fazer Login");
-				System.out.println("2. Cadastrar cliente");
+				System.out.println("2. Cadastrar Cliente");
 				System.out.println("3. Cadastrar Midia");
+				System.out.println("4. Cadastrar Trailer");
 				System.out.println("0. Sair");
 
 				System.out.print("Escolha uma opção: ");
@@ -43,6 +41,9 @@ public class App {
 					case 3:
 						cadastrarMidia();
 						break;
+					case 4:
+						cadastrarTrailer();
+						break;
 					case 0:
 						System.out.println("Saindo...");
 						salvaArquivos();
@@ -51,7 +52,7 @@ public class App {
 						System.out.println("Opção inválida. Tente novamente.");
 				}
 			}
-		} finally {
+		} catch(Exception e) {
 			salvaArquivos();
 		}
     }
@@ -59,6 +60,7 @@ public class App {
 	private static void salvaArquivos() {
 		try (FileWriter clientes = new FileWriter("clientes.csv", false)) {
 			clientes.write(plataforma.salvarClientes());
+			System.out.println("salvo");
 		} catch (IOException e) {}
 		try (FileWriter series = new FileWriter("series.csv", false)) {
 			series.write(plataforma.salvarSeries());
@@ -75,6 +77,9 @@ public class App {
 		try (FileWriter lancamentos = new FileWriter("lancamentos.csv", false)) {
 			lancamentos.write(plataforma.salvarLancamentos());
 		} catch (IOException e) {}
+		try (FileWriter trailers = new FileWriter("trailers.csv", false)) {
+			trailers.write(plataforma.salvarTrailers());
+		} catch (IOException e) {}
 	}
 
 	private static void carregaArquivos() {
@@ -84,42 +89,49 @@ public class App {
 				linhas.add(arquivofilmes.nextLine());
 			}
 			plataforma.carregarFilmes(linhas);
-		} catch (FileNotFoundException e) {}
+		} catch (Exception e) {}
 		try ( Scanner arquivoseries = new Scanner(new File("series.csv")) ) {
 			List<String> linhas = new LinkedList<String>();
 			while (arquivoseries.hasNextLine()) {
 				linhas.add(arquivoseries.nextLine());
 			}
 			plataforma.carregarSeries(linhas);
-		} catch (FileNotFoundException e) {}
+		} catch (Exception e) {}
 		try ( Scanner arquivoclientes = new Scanner(new File("clientes.csv")) ) {
 			List<String> linhas = new LinkedList<String>();
 			while (arquivoclientes.hasNextLine()) {
 				linhas.add(arquivoclientes.nextLine());
 			}
 			plataforma.carregarClientes(linhas);
-		} catch (FileNotFoundException e) {}
+		} catch (Exception e) {}
 		try ( Scanner arquivoAudiencia = new Scanner(new File("audiencia.csv")) ) {
 			List<String> linhas = new LinkedList<String>();
 			while (arquivoAudiencia.hasNextLine()) {
 				linhas.add(arquivoAudiencia.nextLine());
 			}
 			plataforma.carregarAudiencia(linhas);
-		} catch (FileNotFoundException e) {}
+		} catch (Exception e) {}
 		try ( Scanner arquivoAvaliacoes = new Scanner(new File("avaliacoes.csv")) ) {
 			List<String> linhas = new LinkedList<String>();
 			while (arquivoAvaliacoes.hasNextLine()) {
 				linhas.add(arquivoAvaliacoes.nextLine());
 			}
 			plataforma.carregarAvaliacoes(linhas);
-		} catch (FileNotFoundException e) {}
-		try ( Scanner arquivoLancamentos = new Scanner(new File("lancamentos.csv")) ) {
+		} catch (Exception e) {}
+		try ( Scanner arquivoTrailers = new Scanner(new File("lancamentos.csv")) ) {
 			List<String> linhas = new LinkedList<String>();
-			while (arquivoLancamentos.hasNextLine()) {
-				linhas.add(arquivoLancamentos.nextLine());
+			while (arquivoTrailers.hasNextLine()) {
+				linhas.add(arquivoTrailers.nextLine());
 			}
 			plataforma.carregarLancamentos(linhas);
-		} catch (FileNotFoundException e) {}
+		} catch (Exception e) {}
+		try ( Scanner arquivoTrailers = new Scanner(new File("trailers.csv")) ) {
+			List<String> linhas = new LinkedList<String>();
+			while (arquivoTrailers.hasNextLine()) {
+				linhas.add(arquivoTrailers.nextLine());
+			}
+			plataforma.carregarTrailer(linhas);
+		} catch (Exception e) {}
 	}
 
     private static void cadastrarCliente() {
@@ -133,6 +145,7 @@ public class App {
 				break;
 			System.out.println("Resposta Inválida");
 		}
+		scanner.nextLine();
 
         System.out.println("Digite o nome do cliente:");
         String nome = scanner.nextLine();
@@ -226,6 +239,24 @@ public class App {
 		System.out.println("Mídia adicionada com sucesso!");
     }
 
+	private static void cadastrarTrailer() {
+		List<Midia> midias = plataforma.getMidias();
+		midias.addAll(plataforma.getLancamentos());
+		System.out.println("Escolha de qual mídia deve ser o trailer");
+		apresentaMidias(midias);
+		int opcao = 0;
+		while (true) {
+			opcao = scanner.nextInt();
+			if (opcao < 0 || opcao >= midias.size()) {
+				System.out.print("Opção invalida, selecione novamente: ");
+				continue;
+			}
+			break;
+		}
+		plataforma.adicionarTrailer(new Trailer(midias.get(opcao)));
+		System.out.println("Trailer adicionado com sucesso!");
+	};
+
 	private static void Login() {
 		while (true) {
 			System.out.print("Informe o usuário: ");
@@ -285,7 +316,7 @@ public class App {
 			int opcao = scanner.nextInt();
 			switch (opcao) {
 				case 1:
-					System.out.println("Mídias");
+					System.out.println("Mídias:");
 					verMidias();
 					break;
 				case 2:
@@ -299,6 +330,10 @@ public class App {
 				case 4:
 					break;
 				case 5:
+					if (!(cliente instanceof ClienteProfissional)) {
+						System.out.println("Opção inválida");
+						break;
+					}
 					selecionaMidia(plataforma.getLancamentos());
 					break;
 				case 0:
@@ -406,21 +441,27 @@ public class App {
 		}
 	}
 
-	private static void CriaTrailer() {
-		List<Midia> midias = plataforma.getMidias();
-		midias.addAll(plataforma.getLancamentos());
-		System.out.println("Escolha de qual mídia deve ser o trailer");
-		apresentaMidias(midias);
-		int opcao = 0;
+	private static void selecionaTrailer() {
+		List<Trailer> trailers = plataforma.getTrailers();
+		System.out.println("Selecione o trailer para assistir");
+		IntStream.range(0, trailers.size())
+			.forEach(i -> {
+				Trailer trailer = trailers.get(i);
+				System.out.println((i + 1) + ": " + trailer.toString());
+			});
+		System.out.println("0: Sair");
+		int option = 0;
 		while (true) {
-			opcao = scanner.nextInt();
-			if (opcao < 0 || opcao >= midias.size()) {
-				System.out.print("Opção invalida, selecione novamente: ");
+			option = scanner.nextInt();
+			if ( option < 0 || option > trailers.size() ) {
+				System.out.println("Opção inválida, digite novamente:");
 				continue;
 			}
-			break;
+			if (option == 0) {
+				return;
+			}
+			System.out.println("Você assistiu " + trailers.get(option - 1));
+			return;
 		}
-		plataforma.adicionarTrailer(new Trailer(midias.get(opcao)));
-		System.out.println("Trailer adicionado com sucesso!");
-	};
+	}
 }
