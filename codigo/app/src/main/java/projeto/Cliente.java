@@ -87,7 +87,7 @@ public abstract class Cliente {
 	 * @param midia
 	 */
 	public void registrarAudiencia(Midia midia) {
-		midia.registrarAudiencia();
+		midia.assistir();
 	}
 	/**
 	 * registra uma nota para a série
