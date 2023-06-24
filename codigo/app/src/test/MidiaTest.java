@@ -1,4 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
+import Exceptions.SenhaFracaException;
+import Exceptions.SenhaIncorretaException;
+import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
 
