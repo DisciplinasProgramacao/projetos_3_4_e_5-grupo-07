@@ -140,7 +140,7 @@ public class PlataformaStreaming{
 
 	public String salvarClientes() {
 		return clientes.values().parallelStream()
-			.map(Cliente::salvar)
+			.map(cliente -> cliente.salvar())
 			.collect(Collectors.joining("\n"));
 	}
 
