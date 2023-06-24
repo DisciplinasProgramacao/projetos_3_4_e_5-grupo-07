@@ -87,7 +87,7 @@ public abstract class Midia {
 
 	@Override
 	public String toString() {
-		return nome + " - " + genero + " - " + idioma + " - Lançamento: " + dataLancamento ;
+		return nome + " - " + genero + " - " + idioma + " - Lançamento: " + dataLancamento + " - Média: " + this.getMediaAvaliacoes() ;
 	}
 
 }
