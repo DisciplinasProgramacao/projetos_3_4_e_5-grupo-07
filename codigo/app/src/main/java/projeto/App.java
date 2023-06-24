@@ -253,16 +253,27 @@ public class App {
 	}
 
 	private static void menuMidia(Midia midia) {
-		if (midia instanceof Serie) {
-			MenuSerie((Serie) midia);
-		} else if (midia instanceof Filme) {
-			menuFilme((Filme) midia);
+		while (true) {
+			System.out.println("Selecione uma opção");
+			System.out.println("1: Assistir");
+			System.out.println("2: Ver Trailer");
+			System.out.println("3: Avaliar");
+			System.out.println("4: Adicionar a sua Lista");
+			System.out.println("0: voltar");
+			int option = scanner.nextInt();
+			switch (option) {
+				case 1:
+					midia.registrarAudiencia();
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case 5:
+					return;
+			}
 		}
-	}
-
-	private static void MenuSerie(Serie serie) {
-	}
-
-	private static void menuFilme(Filme filme) {
 	}
 }
