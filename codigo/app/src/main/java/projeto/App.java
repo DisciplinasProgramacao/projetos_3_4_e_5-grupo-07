@@ -11,6 +11,7 @@ import java.util.stream.IntStream;
 
 import projeto.enums.Genero;
 import projeto.enums.Idioma;
+import projeto.exceptions.MidiaJaAvaliada;
 
 public class App {
 	static Scanner scanner = new Scanner(System.in);
@@ -266,7 +267,7 @@ public class App {
 				case 2:
 					break;
 				case 3:
-					menuAvaliacao();
+					menuAvaliacao(midia);
 					break;
 				case 4:
 					plataforma.getClienteAtual().adicionarNaLista(midia);
@@ -279,7 +280,28 @@ public class App {
 		}
 	}
 
-	private static void menuAvaliacao() {
+	private static void menuAvaliacao(Midia midia) {
+		Cliente cliente = plataforma.getClienteAtual();
+		try {
+			while (true) {
+				System.out.println("Selecione a nota de 1 a 5");
+				double nota = scanner.nextDouble();
+				if (nota > 5 || nota < 1) {
+					continue;
+				}
+				if (!(cliente instanceof ClienteComum)) {
+					cliente.avalia(midia, nota);
+				} else {
+					System.out.println("Digite o comentario da avaliacao");
+					String comentario = scanner.nextLine();
+					cliente.avalia(midia, nota, comentario);
+				}
+				System.out.println("Avaliação registrada");
+				break;
+			}
+		} catch (MidiaJaAvaliada e) {
+			System.out.println("Você já avaliou essa mídia");
+		}
 	}
 
 	private static <T extends Enum<T>> T selecionaEnum(String mensagem, Class<T> enumclass) {
