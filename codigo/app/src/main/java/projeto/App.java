@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
+import com.google.common.collect.Lists;
+
 import projeto.enums.Genero;
 import projeto.enums.Idioma;
 import projeto.exceptions.MidiaJaAvaliada;
@@ -403,4 +405,22 @@ public class App {
 			break;
 		}
 	}
+
+	private static void CriaTrailer() {
+		List<Midia> midias = plataforma.getMidias();
+		midias.addAll(plataforma.getLancamentos());
+		System.out.println("Escolha de qual mídia deve ser o trailer");
+		apresentaMidias(midias);
+		int opcao = 0;
+		while (true) {
+			opcao = scanner.nextInt();
+			if (opcao < 0 || opcao >= midias.size()) {
+				System.out.print("Opção invalida, selecione novamente: ");
+				continue;
+			}
+			break;
+		}
+		plataforma.adicionarTrailer(new Trailer(midias.get(opcao)));
+		System.out.println("Trailer adicionado com sucesso!");
+	};
 }

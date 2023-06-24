@@ -50,7 +50,7 @@ public class PlataformaStreaming{
 	}
 
 	public List<Midia> getLancamentos() throws ClienteSemAcesso {
-		if (!(clienteAtual instanceof  ClienteProfissional)) 
+		if (!(clienteAtual instanceof ClienteProfissional ||  clienteAtual == null)) 
 			throw new ClienteSemAcesso();
 		return lancamentos.values().parallelStream()
 		.map(Lancamento::getMidia).toList();
