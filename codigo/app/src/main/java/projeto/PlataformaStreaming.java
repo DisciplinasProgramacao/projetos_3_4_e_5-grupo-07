@@ -11,9 +11,10 @@ import projeto.exceptions.ClienteSemAcesso;
 
 public class PlataformaStreaming{
     private String nome;
-	private Map<String, Lancamento> lancamentos = new HashMap<>();
     private Map<String, Midia> midias = new HashMap<>();
     private Map<String, Cliente> clientes = new HashMap<>();;
+	private Map<String, Lancamento> lancamentos = new HashMap<>();
+	private Map<String, Trailer> trailers = new HashMap<>();
     private Cliente clienteAtual;
 
 	public void adicionarMidia(Midia midia) {
@@ -22,6 +23,10 @@ public class PlataformaStreaming{
 
 	public void adicionarLancamento(Midia midia) {
 		lancamentos.put(midia.getNome(), new Lancamento(midia));
+	}
+
+	public void adicionarTrailer(Trailer trailer) {
+		trailers.put(trailer.getNomeMidia(), trailer);
 	}
 
 	public void adicionarCliente(Cliente cliente) {
