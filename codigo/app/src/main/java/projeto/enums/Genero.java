@@ -9,7 +9,7 @@ import java.util.Random;
  * Genero
  */
 public enum Genero {
-	Acao, Comedia, Suspense, Terror, Romance, Drama, FiccaoCientifica;
+	Acao, Anime, Aventura, Comedia, Documentario, Drama, Policial, Romance, Suspense;
 
 	private static final List<Genero> VALUES =
 	Collections.unmodifiableList(Arrays.asList(values()));
@@ -24,18 +24,22 @@ public enum Genero {
 		switch (this) {
 			case Acao:
 				return "Ação";
+			case Anime:
+				return "Anime";
+			case Aventura:
+				return "Aventura";
 			case Comedia:
 				return "Comédia";
-			case Suspense:
-				return "Suspense";
-			case Terror:
-				return "Terror";
-			case Romance:
-				return "Romance";
+			case Documentario:
+				return "Documentario";
 			case Drama:
 				return "Drama";
-			case FiccaoCientifica:
-				return "Ficção Cientifica";
+			case Policial:
+				return "Policial";
+			case Romance:
+				return "Romance";
+			case Suspense:
+				return "Suspense";
 			default:
 				return null;
 		}
