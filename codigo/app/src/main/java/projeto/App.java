@@ -255,7 +255,7 @@ public class App {
 			int option = scanner.nextInt();
 			switch (option) {
 				case 1:
-					midia.assistir();
+					plataforma.assistir(midia);;
 					break;
 				case 2:
 					break;
@@ -273,7 +273,8 @@ public class App {
 		}
 	}
 
-	private static void menuAvaliacao() {}
+	private static void menuAvaliacao() {
+	}
 
 	private static <T extends Enum<T>> T selecionaEnum(String mensagem, Class<T> enumclass) {
 		T[] valores = enumclass.getEnumConstants();
