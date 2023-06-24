@@ -24,7 +24,7 @@ public abstract class Midia {
 		this.dataLancamento = dataLancamento;
 	}
 
-	public void registrarAudiencia() {
+	public void assistir() {
 		audiencia++;
 	}
 
