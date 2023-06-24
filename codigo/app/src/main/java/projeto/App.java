@@ -258,7 +258,7 @@ public class App {
 			switch (opcao) {
 				case 1:
 					System.out.println("Mídias");
-					selecionaMidia(plataforma.getMidias());
+					verMidias();
 					break;
 				case 2:
 					System.out.println("Minha Lista:");
