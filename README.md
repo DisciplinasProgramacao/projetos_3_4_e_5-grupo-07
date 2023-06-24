@@ -6,7 +6,6 @@ Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
 
 * Diogo Chaves Torres
 * João Francisco Carvalho Soares Oliveira Queiroga
-* Philippe Roberdo Dutra Chaves Vieira
 * Saulo Pereira Vasconcelos
 
 
