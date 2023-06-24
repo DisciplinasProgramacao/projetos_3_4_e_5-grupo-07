@@ -86,13 +86,30 @@ public class App {
 	}
 
     private static void cadastrarCliente() {
+		int tipo;
+		while (true) {
+			System.out.println("Selecione o Tipo de Cliente");
+			System.out.println("1: Comum");
+			System.out.println("2: Profissional");
+			tipo = scanner.nextInt();
+			if (tipo == 1 || tipo == 2)
+				break;
+			System.out.println("Resposta Inválida");
+		}
+
         System.out.println("Digite o nome do cliente:");
         String nome = scanner.nextLine();
 
         System.out.println("Digite a senha do cliente:");
         String senha = scanner.nextLine();
 
-        Cliente cliente = new Cliente(nome, senha);
+        Cliente cliente = null;
+		switch (tipo) {
+			case 1:
+				cliente = new ClienteComum(nome, senha);
+			case 2:
+				cliente = new ClienteProfissional(nome, senha);
+		}
         plataforma.adicionarCliente(cliente);
         System.out.println("Cliente adicionado com sucesso!");
 
