@@ -1,5 +1,7 @@
 package projeto;
 
+import projeto.enums.Genero;
+
 /**
  * Trailer
  */
