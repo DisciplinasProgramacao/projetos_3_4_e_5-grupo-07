@@ -85,7 +85,7 @@ public abstract class Midia {
 	}
 
 	public String salvar() {
-		return nome + ";" + audiencia + ";" + genero + ";" + idioma + ";" + dataLancamento;
+		return nome + ";" +  genero + ";" + idioma + ";" + dataLancamento;
 	}
 
 	public String salvarAudiencia() {

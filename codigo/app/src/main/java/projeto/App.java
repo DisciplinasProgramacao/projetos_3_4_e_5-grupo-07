@@ -173,6 +173,7 @@ public class App {
 
 					idioma = selecionaEnum("Selecione o Idioma", Idioma.class);
 
+					scanner.nextLine();
 					System.out.println("Digite a data de lançamento no formato dd/MM/yyyy:");
 					String dataLancamento = scanner.nextLine();
 
@@ -189,6 +190,7 @@ public class App {
 
 					idioma = selecionaEnum("Selecione o Idioma", Idioma.class);
 
+					scanner.nextLine();
 					System.out.println("Digite a data de lançamento no formato dd/MM/yyyy:");
 					String dataLancamentoFilme = scanner.nextLine();
 

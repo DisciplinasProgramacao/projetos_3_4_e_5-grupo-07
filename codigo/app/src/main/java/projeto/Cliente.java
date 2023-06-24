@@ -126,8 +126,8 @@ public abstract class Cliente {
 		return new ArrayList<>(historico);
 	}
 
-	public void setHistorico(Set<Midia> listaJaVista) {
-		this.historico = listaJaVista;
+	public void setHistorico(Set<Midia> historico) {
+		this.historico = historico;
 	}
 
 	public boolean login(String nome, String senha) {
