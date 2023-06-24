@@ -4,4 +4,5 @@ UML V1.1 -- Adição da avaliação e dos métodos que utilisam esta variável.<
 UML V2.0 -- Adição da Classe de Filme.</br>
 UML V3.0 -- Modificação das Classes Filme e Série, e criação da Classe Midia.</br>
 UML V4.0 -- Ultimas alterações.</br>
-![ texto](UML.drawio.png) 
+UML V5.0 -- Diagrama final.</br>
+![ texto](diagramafinal.drawio.png) 
