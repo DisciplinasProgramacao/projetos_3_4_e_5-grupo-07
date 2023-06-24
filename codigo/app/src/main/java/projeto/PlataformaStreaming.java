@@ -7,14 +7,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import projeto.exceptions.ClienteSemAcesso;
+
 public class PlataformaStreaming{
     private String nome;
+	private Map<String, Lancamento> lancamentos = new HashMap<>();
     private Map<String, Midia> midias = new HashMap<>();
     private Map<String, Cliente> clientes = new HashMap<>();;
     private Cliente clienteAtual;
 
 	public void adicionarMidia(Midia midia) {
 		midias.put(midia.getNome(), midia);
+	}
+
+	public void adicionarLancamento(Midia midia) {
+		lancamentos.put(midia.getNome(), new Lancamento(midia));
 	}
 
 	public void adicionarCliente(Cliente cliente) {
@@ -35,6 +42,13 @@ public class PlataformaStreaming{
 
 	public List<Midia> getMidias(){
 		return new ArrayList<>(midias.values());
+	}
+
+	public List<Midia> getLancamentos() throws ClienteSemAcesso {
+		if (!(clienteAtual instanceof  ClienteProfissional)) 
+			throw new ClienteSemAcesso();
+		return lancamentos.values().parallelStream()
+		.map(Lancamento::getMidia).toList();
 	}
 
 	public void setClientes (final HashMap<String, Cliente> clientes){

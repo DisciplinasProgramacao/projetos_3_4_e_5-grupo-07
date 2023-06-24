@@ -123,56 +123,75 @@ public class App {
     }
 
    private static void cadastrarMidia() {
-    	
-    	 System.out.println("Escolha o tipo de mídia:");
-         System.out.println("1. Série");
-         System.out.println("2. Filme");
 
-         System.out.print("Digite a opção: ");
-         int opcao = scanner.nextInt();
-         scanner.nextLine(); // Limpar o buffer do scanner
-         
+		System.out.println("Escolha o tipo de mídia:");
+		System.out.println("1. Série");
+		System.out.println("2. Filme");
+
+		System.out.print("Digite a opção: ");
+		int opcao = scanner.nextInt();
+
 		Genero genero;
 		Idioma idioma;
          
-         switch (opcao) {
-			case 1:
-				System.out.println("Digite o nome da série:");
-				String nome = scanner.nextLine();
+		Midia midia;
+		while (true) {
+			switch (opcao) {
+				case 1:
+					System.out.println("Digite o nome da série:");
+					String nome = scanner.nextLine();
 
-				genero = selecionaEnum("Selecione o Genero", Genero.class);
+					genero = selecionaEnum("Selecione o Genero", Genero.class);
 
-				idioma = selecionaEnum("Selecione o Idioma", Idioma.class);
+					idioma = selecionaEnum("Selecione o Idioma", Idioma.class);
 
-				System.out.println("Digite a data de lançamento no formato dd/MM/yyyy:");
-				String dataLancamento = scanner.nextLine();
+					System.out.println("Digite a data de lançamento no formato dd/MM/yyyy:");
+					String dataLancamento = scanner.nextLine();
 
-				System.out.println("Digite o número de episodios:");
-				int qtdEpisodios = scanner.nextInt();
-			  
+					System.out.println("Digite o número de episodios:");
+					int qtdEpisodios = scanner.nextInt();
+					 
+					midia = new Serie(nome, genero, idioma, dataLancamento, qtdEpisodios);
+					break;
+				case 2:
+					System.out.println("Digite o nome do filme:");
+					String nomeFilme = scanner.nextLine();
 
-				Serie serie = new Serie(nome, genero, idioma, dataLancamento, qtdEpisodios);
-				plataforma.adicionarMidia(serie);
-				System.out.println("Série adicionada com sucesso!");
-				break;
-			case 2:
-				System.out.println("Digite o nome do filme:");
-				String nomeFilme = scanner.nextLine();
-				
-				genero = selecionaEnum("Selecione o Genero", Genero.class);
+					genero = selecionaEnum("Selecione o Genero", Genero.class);
 
-				idioma = selecionaEnum("Selecione o Idioma", Idioma.class);
-				
-				System.out.println("Digite a data de lançamento no formato dd/MM/yyyy:");
-				String dataLancamentoFilme = scanner.nextLine();
+					idioma = selecionaEnum("Selecione o Idioma", Idioma.class);
 
-				Filme filme = new Filme(nomeFilme, genero, idioma,dataLancamentoFilme);
-				plataforma.adicionarMidia(filme);
-				System.out.println("Filme adicionado com sucesso!");
-				break;
-			default:
-			System.out.println("Opção inválida. Tente novamente.");
-		 }
+					System.out.println("Digite a data de lançamento no formato dd/MM/yyyy:");
+					String dataLancamentoFilme = scanner.nextLine();
+
+					midia = new Filme(nomeFilme, genero, idioma,dataLancamentoFilme);
+					break;
+				default:
+					System.out.println("Opção inválida. Tente novamente.");
+					continue;
+			}
+			break;
+		}
+		System.out.println("A mídia é um lançamento?");
+		System.out.println("1: Sim");
+		System.out.println("2: Não");
+		while (true) {
+			opcao = scanner.nextInt();
+			switch (opcao) {
+				case 1:
+					plataforma.adicionarLancamento(midia);
+					break;
+				case 2:
+					plataforma.adicionarMidia(midia);
+					break;
+				default:
+					System.out.println("Opção inválida");
+					continue;
+			}
+			break;
+		}
+		plataforma.adicionarMidia(midia);
+		System.out.println("Mídia adicionada com sucesso!");
     }
 
 	private static void Login() {
@@ -227,6 +246,9 @@ public class App {
 			System.out.println("1: Ver Mídias");
 			System.out.println("2: Ver minha lista");
 			System.out.println("3: Ver histórico");
+			System.out.println("4: Ver Trailers");
+			if (cliente instanceof ClienteProfissional)
+				System.out.println("5: Ver Lançamentos");
 			System.out.println("0: Logout");
 			int opcao = scanner.nextInt();
 			switch (opcao) {
@@ -241,6 +263,11 @@ public class App {
 				case 3:
 					System.out.println("Histórico:");
 					selecionaMidia(cliente.getMinhaLista());
+					break;
+				case 4:
+					break;
+				case 5:
+					selecionaMidia(plataforma.getLancamentos());
 					break;
 				case 0:
 					plataforma.logout();
