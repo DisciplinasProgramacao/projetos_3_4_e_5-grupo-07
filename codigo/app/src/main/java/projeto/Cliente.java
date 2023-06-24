@@ -2,8 +2,10 @@ package projeto;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import projeto.enums.Genero;
 import projeto.enums.Idioma;
@@ -18,12 +20,12 @@ public abstract class Cliente {
 	private String nome;
 	private String senha;
 	private List<Midia> minhaLista;
-	private List<Midia> historico;
+	private Set<Midia> historico;
     protected Map<Midia, Avaliacao> avaliacoes;
 
 	public Cliente() {
 		minhaLista = new ArrayList<Midia>();
-		historico = new ArrayList<Midia>();
+		historico = new HashSet<Midia>();
 		avaliacoes = new HashMap<Midia, Avaliacao>();
 	}
 
@@ -117,14 +119,14 @@ public abstract class Cliente {
 	}
 
 	protected void setMinhaLista(List<Midia> minhaLista) {
-		this.historico = minhaLista;
+		this.minhaLista = minhaLista;
 	}
 
 	public List<Midia> getHistorico() {
-		return historico;
+		return new ArrayList<>(historico);
 	}
 
-	public void setHistorico(List<Midia> listaJaVista) {
+	public void setHistorico(Set<Midia> listaJaVista) {
 		this.historico = listaJaVista;
 	}
 
