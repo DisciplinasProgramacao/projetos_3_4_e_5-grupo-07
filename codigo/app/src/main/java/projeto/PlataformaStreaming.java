@@ -1,6 +1,7 @@
 package projeto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,8 +77,8 @@ public class PlataformaStreaming{
 		.toList();
 	}
 
-	public void registrarAudiencia(Serie serie) {
-		serie.registrarAudiencia();
+	public void assistir(Midia midia) {
+		serie.assistir(clienteAtual);
 	}
 
 	public String salvarSeries() {
@@ -118,6 +119,20 @@ public class PlataformaStreaming{
 		linhascsv.parallelStream().forEach(linha -> {
 			Cliente cliente = Cliente.carregar(linha);
 			clientes.put(cliente.getNome(), cliente);
+		});
+	}
+
+	public void carregarAvaliacoes(List<String> linhascsv) {
+		linhascsv.parallelStream().forEach(linha -> {
+			String[] separada = linha.split(";");
+			Cliente cliente = clientes.get(separada[0]);
+			Arrays.stream(Arrays.copyOfRange(separada, 1, separada.length))
+				.forEach(avaliacao -> {
+					String[] dados = avaliacao.split(",");
+					Midia midia = midias.get(dados[0]);
+					double nota = Double.parseDouble(dados[1]);
+					cliente.avalia(midia, nota);
+				});
 		});
 	}
 }
