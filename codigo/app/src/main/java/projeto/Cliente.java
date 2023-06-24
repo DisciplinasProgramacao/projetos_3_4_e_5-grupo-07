@@ -134,6 +134,23 @@ public abstract class Cliente {
 		return nome + ";" + senha;
 	}
 
+	public String salvarAvaliacoes() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(nome);
+		avaliacoes.entrySet().stream()
+		.forEach(entry -> {
+				sb.append(";");
+				sb.append(entry.getKey().getNome());
+				sb.append(",");
+				sb.append(entry.getValue().getNota());
+				sb.append(",");
+				sb.append(entry.getValue().getData());
+				sb.append(",");
+				sb.append(entry.getValue().getComentario());
+		});
+		return sb.toString();
+	}
+
 	public static Cliente carregar(String linhacsv) {
 		Cliente c;
 		String[] atributos = linhacsv.split(";");

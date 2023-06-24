@@ -1,6 +1,8 @@
 package projeto;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import projeto.enums.Genero;
 import projeto.enums.Idioma;
@@ -11,7 +13,7 @@ import projeto.exceptions.MidiaJaAvaliada;
  */
 public abstract class Midia {
     private String nome;
-    private int audiencia = 0;
+	private Set<String> audiencia;
     private Genero genero;
     private Idioma idioma;
 	public String dataLancamento;
@@ -21,11 +23,16 @@ public abstract class Midia {
 		this.nome = nome;
 		this.genero = genero;
 		this.idioma = idioma;
+		this.audiencia = new HashSet<String>();
 		this.dataLancamento = dataLancamento;
 	}
 
-	public void assistir() {
-		audiencia++;
+	public void assistir(Cliente cliente) {
+		this.assistir(cliente.getNome());
+	}
+
+	public void assistir(String cliente) {
+		audiencia.add(cliente);
 	}
 
 	public String getNome() {
@@ -48,6 +55,10 @@ public abstract class Midia {
 		this.genero = Genero.fromString(genero);
 	}
 
+	public int getAudiencia() {
+		return audiencia.size();
+	}
+
 	public Idioma getIdioma() {
 		return idioma;
 	}
@@ -58,14 +69,6 @@ public abstract class Midia {
 
 	public void setIdioma(String idioma) {
 		this.idioma = Idioma.fromString(idioma);
-	}
-
-	public int getAudiencia() {
-		return audiencia;
-	}
-
-	protected void setAudiencia(int audiencia) {
-		this.audiencia = audiencia;
 	}
 
 	public double getMediaAvaliacoes() {
@@ -83,6 +86,15 @@ public abstract class Midia {
 
 	public String salvar() {
 		return nome + ";" + audiencia + ";" + genero + ";" + idioma + ";" + dataLancamento;
+	}
+
+	public String salvarAudiencia() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(nome);
+		sb.append(";");
+		String elementos = String.join(";", audiencia);
+		sb.append(elementos);
+		return sb.toString();
 	}
 
 	@Override
