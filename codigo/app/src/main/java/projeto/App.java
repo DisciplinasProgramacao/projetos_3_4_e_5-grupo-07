@@ -19,35 +19,39 @@ public class App {
     
     public static void main(String[] args) throws IOException {
 	    carregaArquivos();
-        while (true) {
-            System.out.println("Menu:");
-            System.out.println("1. Fazer Login");
-            System.out.println("2. Cadastrar cliente");
-            System.out.println("3. Cadastrar Midia");
-            System.out.println("0. Sair");
+		try {
+			while (true) {
+				System.out.println("Menu:");
+				System.out.println("1. Fazer Login");
+				System.out.println("2. Cadastrar cliente");
+				System.out.println("3. Cadastrar Midia");
+				System.out.println("0. Sair");
 
-            System.out.print("Escolha uma opção: ");
-            int opcao = scanner.nextInt();
-            scanner.nextLine(); 
+				System.out.print("Escolha uma opção: ");
+				int opcao = scanner.nextInt();
+				scanner.nextLine(); 
 
-            switch (opcao) {
-				case 1:
-					Login();
-					break;
-                case 2:
-                    cadastrarCliente();
-                    break;
-                case 3:
-                    cadastrarMidia();
-                    break;
-                case 0:
-                    System.out.println("Saindo...");
-					salvaArquivos();
-                    return;
-                default:
-                    System.out.println("Opção inválida. Tente novamente.");
-            }
-        }
+				switch (opcao) {
+					case 1:
+						Login();
+						break;
+					case 2:
+						cadastrarCliente();
+						break;
+					case 3:
+						cadastrarMidia();
+						break;
+					case 0:
+						System.out.println("Saindo...");
+						salvaArquivos();
+						return;
+					default:
+						System.out.println("Opção inválida. Tente novamente.");
+				}
+			}
+		} finally {
+			salvaArquivos();
+		}
     }
 
 	private static void salvaArquivos() {
@@ -282,9 +286,8 @@ public class App {
 		while (true) {
 			System.out.println("Selecione uma opção");
 			System.out.println("1: Assistir");
-			System.out.println("2: Ver Trailer");
-			System.out.println("3: Avaliar");
-			System.out.println("4: Adicionar a sua Lista");
+			System.out.println("2: Avaliar");
+			System.out.println("3: Adicionar a sua Lista");
 			System.out.println("0: voltar");
 			int option = scanner.nextInt();
 			switch (option) {
@@ -292,11 +295,9 @@ public class App {
 					plataforma.assistir(midia);;
 					break;
 				case 2:
-					break;
-				case 3:
 					menuAvaliacao(midia);
 					break;
-				case 4:
+				case 3:
 					plataforma.getClienteAtual().adicionarNaLista(midia);
 					break;
 				case 0:
