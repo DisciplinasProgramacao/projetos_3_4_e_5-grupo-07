@@ -56,8 +56,14 @@ public class App {
 		try (FileWriter series = new FileWriter("series.csv", false)) {
 			series.write(plataforma.salvarSeries());
 		} catch (IOException e) {}
-		try (FileWriter arquivoclientes = new FileWriter("filmes.csv", false)) {
-			arquivoclientes.write(plataforma.salvarFilmes());
+		try (FileWriter filmes = new FileWriter("filmes.csv", false)) {
+			filmes.write(plataforma.salvarFilmes());
+		} catch (IOException e) {}
+		try (FileWriter audiencia = new FileWriter("audiencia.csv", false)) {
+			audiencia.write(plataforma.salvarAudiencia());
+		} catch (IOException e) {}
+		try (FileWriter avaliacoes = new FileWriter("audiencia.csv", false)) {
+			avaliacoes.write(plataforma.salvarAvaliacoes());
 		} catch (IOException e) {}
 	}
 

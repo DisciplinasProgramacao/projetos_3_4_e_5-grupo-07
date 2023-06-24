@@ -101,6 +101,18 @@ public class PlataformaStreaming{
 			.collect(Collectors.joining("\n"));
 	}
 
+	public String salvarAudiencia() {
+		return midias.values().parallelStream()
+		.map(Midia::salvarAudiencia)
+		.collect(Collectors.joining("\n"));
+	}
+
+	public String salvarAvaliacoes() {
+		return clientes.values().parallelStream()
+		.map(Cliente::salvarAvaliacoes)
+		.collect(Collectors.joining("\n"));
+	}
+
 	public void carregarSeries(List<String> linhascsv) {
 		linhascsv.parallelStream().forEach(linha -> {
 			Serie serie = Serie.carregar(linha);
