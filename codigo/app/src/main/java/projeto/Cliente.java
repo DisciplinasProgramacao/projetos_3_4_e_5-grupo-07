@@ -7,24 +7,30 @@ import java.util.Map;
 
 import projeto.enums.Genero;
 import projeto.enums.Idioma;
+import projeto.enums.TipoCliente;
 import projeto.exceptions.MidiaJaAvaliada;
+import projeto.exceptions.NaoPodeComentarException;
 
 /**
  * Cliente
  */
-public class Cliente {
+public abstract class Cliente {
 	private String nome;
 	private String senha;
 	private List<Midia> minhaLista;
 	private List<Midia> historico;
     protected Map<Midia, Avaliacao> avaliacoes;
 
-	public Cliente(String nome, String senha) {
-		this.nome = nome;
-		this.senha = senha;
+	public Cliente() {
 		minhaLista = new ArrayList<Midia>();
 		historico = new ArrayList<Midia>();
 		avaliacoes = new HashMap<Midia, Avaliacao>();
+	}
+
+	public Cliente(String nome, String senha) {
+		this();
+		this.nome = nome;
+		this.senha = senha;
 	}
 
 	/**
@@ -88,21 +94,13 @@ public class Cliente {
 	 * @param midia
 	 * @param nota
 	 */
-	public void avalia(Midia midia, int nota, String comentario) throws MidiaJaAvaliada {
-		if (avaliacoes.containsKey(midia))
-			return;
-		if (!this.isEspecialista()) {
-			this.avalia(midia, nota);
-			return;
-		}
-		Avaliacao avaliacao = new Avaliacao(nota, comentario);
-		avaliacoes.put(midia, avaliacao);
-		midia.avalia(this.getNome(), avaliacao);
+	public void avalia(Midia midia, int nota, String comentario) throws MidiaJaAvaliada, NaoPodeComentarException {
+		throw new NaoPodeComentarException();
 	}
 	
 	public void avalia(Midia midia, int nota) throws MidiaJaAvaliada {
 		if (avaliacoes.containsKey(midia))
-			return;
+			throw new MidiaJaAvaliada();
 		Avaliacao avaliacao = new Avaliacao(nota);
 		avaliacoes.put(midia, avaliacao);
 		midia.avalia(this.getNome(), avaliacao);
@@ -128,10 +126,6 @@ public class Cliente {
 		this.historico = listaJaVista;
 	}
 
-	public boolean isEspecialista() {
-		return avaliacoes.size() > 5;
-	}
-
 	public boolean login(String nome, String senha) {
 		return this.nome.equals(nome) && this.senha.equals(senha);
 	}
@@ -141,9 +135,24 @@ public class Cliente {
 	}
 
 	public static Cliente carregar(String linhacsv) {
+		Cliente c;
 		String[] atributos = linhacsv.split(";");
 		String nome = atributos[0];
 		String senha = atributos[1];
-		return new Cliente(nome, senha); 
+		TipoCliente tipo = TipoCliente.fromString(atributos[2]);
+		switch (tipo) {
+			case Comum:
+				c = new ClienteComum(nome, senha);
+				break;
+			case Especialista:
+				c = new ClienteEspecialista(nome, senha);
+				break;
+			case Profissional:
+				c = new ClienteProfissional(nome, senha);
+				break;
+			default:
+				c = null;
+		}
+		return c; 
 	}
 }
