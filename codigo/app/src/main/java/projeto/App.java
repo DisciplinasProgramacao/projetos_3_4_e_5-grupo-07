@@ -328,6 +328,7 @@ public class App {
 					selecionaMidia(cliente.getMinhaLista());
 					break;
 				case 4:
+					selecionaTrailer();
 					break;
 				case 5:
 					if (!(cliente instanceof ClienteProfissional)) {
