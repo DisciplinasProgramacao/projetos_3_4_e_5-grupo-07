@@ -62,7 +62,7 @@ Caso o cliente for um cliente porfissional ira aparecer:
 - Ao digitar o número 1 , aparecerá as mídias cadastradas.
 - Ao digitar o número 2 , aparecerá a lista do cliente.
 - Ao digitar o número 3 , aparecerá o histórico do cliente.
-- Ao digitar o número 4 , ------.
+- Ao digitar o número 4 , aparecerá os trailers das midias cadastradas.
 - Ao digitar o número 5 , aparecerá os lancamentos das mídias.
 - Ao digitar o número 0 , o cliente sairá do login e vai retornar para o menu inicial.
 
