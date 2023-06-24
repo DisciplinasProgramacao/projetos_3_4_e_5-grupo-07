@@ -40,8 +40,8 @@ Depois que esses campos forem preenchidos, o filme será cadastrado.
 
 - A seguir, aparecera um novo menu pedido ao usuário que digite:
   A mídia é um lançamento?
-  1: Sim
-  2: Não
+  1. Sim
+  2. Não
      
 - Ao digitar o número 1 , será adicionado um lancamento.
 - Ao digitar o número 2 , será adicionado na classe midia.
