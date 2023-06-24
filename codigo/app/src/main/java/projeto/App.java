@@ -125,55 +125,47 @@ public class App {
          int opcao = scanner.nextInt();
          scanner.nextLine(); // Limpar o buffer do scanner
          
+		Genero genero;
+		Idioma idioma;
          
          switch (opcao) {
-             case 1:
-            	 System.out.println("Digite o nome da série:");
-                 String nome = scanner.nextLine();
+			case 1:
+				System.out.println("Digite o nome da série:");
+				String nome = scanner.nextLine();
 
+				genero = selecionaEnum("Selecione o Genero", Genero.class);
 
-                 System.out.println("Digite o nome da genero:");
-                 String generoSerie = scanner.nextLine();
-                 
-                 System.out.println("Digite o nome da linguagem:");
-                 String linguagemSerie = scanner.nextLine();
+				idioma = selecionaEnum("Selecione o Idioma", Idioma.class);
 
-                 System.out.println("Digite a data de lançamento no formato dd/MM/yyyy:");
-                 String dataLancamento = scanner.nextLine();
+				System.out.println("Digite a data de lançamento no formato dd/MM/yyyy:");
+				String dataLancamento = scanner.nextLine();
 
-                 System.out.println("Digite o número de episodios:");
-                 int qtdEpisodios = scanner.nextInt();
-              
+				System.out.println("Digite o número de episodios:");
+				int qtdEpisodios = scanner.nextInt();
+			  
 
-                 Serie serie = new Serie(nome, Genero.fromString(generoSerie), Idioma.fromString(linguagemSerie), dataLancamento, qtdEpisodios);
-                 plataforma.adicionarMidia(serie);
-                 System.out.println("Série adicionada com sucesso!");
-                 break;
+				Serie serie = new Serie(nome, genero, idioma, dataLancamento, qtdEpisodios);
+				plataforma.adicionarMidia(serie);
+				System.out.println("Série adicionada com sucesso!");
+				break;
+			case 2:
+				System.out.println("Digite o nome do filme:");
+				String nomeFilme = scanner.nextLine();
+				
+				genero = selecionaEnum("Selecione o Genero", Genero.class);
 
-             case 2:
-                
-                 System.out.println("Digite o nome do filme:");
-                 String nomeFilme = scanner.nextLine();
-                
-                 
-                 System.out.println("Digite o nome do genero:");
-                 String generoFilme = scanner.nextLine();
-                
-                 
-                 System.out.println("Digite o nome do linguagem:");
-                 String linguaFilme = scanner.nextLine();
-                
-                 
-                 System.out.println("Digite a data de lançamento no formato dd/MM/yyyy:");
-                 String dataLancamentoFilme = scanner.nextLine();
+				idioma = selecionaEnum("Selecione o Idioma", Idioma.class);
+				
+				System.out.println("Digite a data de lançamento no formato dd/MM/yyyy:");
+				String dataLancamentoFilme = scanner.nextLine();
 
-                 Filme filme = new Filme(nomeFilme, Genero.fromString(generoFilme), Idioma.fromString(linguaFilme),dataLancamentoFilme);
-                 plataforma.adicionarMidia(filme);
-                 System.out.println("Filme adicionado com sucesso!");
-                 break;
-             default:
-                 System.out.println("Opção inválida. Tente novamente.");
-         }
+				Filme filme = new Filme(nomeFilme, genero, idioma,dataLancamentoFilme);
+				plataforma.adicionarMidia(filme);
+				System.out.println("Filme adicionado com sucesso!");
+				break;
+			default:
+			System.out.println("Opção inválida. Tente novamente.");
+		 }
     }
 
 	private static void Login() {
@@ -268,12 +260,33 @@ public class App {
 				case 2:
 					break;
 				case 3:
+					menuAvaliacao();
 					break;
 				case 4:
+					plataforma.getClienteAtual().adicionarNaLista(midia);
 					break;
-				case 5:
+				case 0:
 					return;
+				default:
+					System.out.println("Opção Inválida");
 			}
+		}
+	}
+
+	private static void menuAvaliacao() {}
+
+	private static <T extends Enum<T>> T selecionaEnum(String mensagem, Class<T> enumclass) {
+		T[] valores = enumclass.getEnumConstants();
+		while (true) {
+			System.out.println(mensagem);
+			IntStream.range(0, valores.length)
+				.forEach(index -> System.out.println(index + ": " + valores[index]));
+			int opcao = scanner.nextInt();
+			if (opcao < 0 || opcao >= valores.length) {
+				System.out.println("Valor inválido");
+				continue;
+			}
+			return valores[opcao];
 		}
 	}
 }
