@@ -78,7 +78,7 @@ public class PlataformaStreaming{
 	}
 
 	public void assistir(Midia midia) {
-		serie.assistir(clienteAtual);
+		midia.assistir(clienteAtual);
 	}
 
 	public String salvarSeries() {
