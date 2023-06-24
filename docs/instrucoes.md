@@ -4,7 +4,7 @@
  1. Fazer Login
  2. Cadastrar cliente
  3. Cadastrar Midia
- 0. Sair
+ 0.  Sair
 
 
 - Ao digitar o número 1, será pedido ao usuário que digite:
@@ -37,3 +37,17 @@ Depois que esses campos forem preenchidos, a série será cadastrada.
   * Digite a data de lançamento no formato dd/MM/yyyy:
   * Digite a duração do filme:
 Depois que esses campos forem preenchidos, o filme será cadastrado.
+
+- A seguir, aparecera um novo menu pedido ao usuário que digite:
+  A mídia é um lançamento?
+  1. Sim
+  2. Não
+     
+- Ao digitar o número 1 , será adicionado um lancamento.
+- Ao digitar o número 2 , será adicionado na classe midia.
+
+ 
+
+
+
+- Ao digitar o número 0 , o programa ira finalizar e salvar no arquivos o que foi adicionado.
