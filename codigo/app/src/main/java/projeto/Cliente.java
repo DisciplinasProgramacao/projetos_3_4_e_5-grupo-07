@@ -114,6 +114,10 @@ public abstract class Cliente {
 		return nome;
 	}
 
+	public int getNAvaliacoes() {
+		return avaliacoes.size();
+	}
+
 	public List<Midia> getMinhaLista() {
 		return minhaLista;
 	}
@@ -173,5 +177,13 @@ public abstract class Cliente {
 				c = null;
 		}
 		return c; 
+	}
+
+	protected String getSenha() {
+		return senha;
+	}
+
+	protected Map<Midia, Avaliacao> getAvaliacoes() {
+		return avaliacoes;
 	}
 }

@@ -17,4 +17,8 @@ public class ClienteComum extends Cliente {
 		return super.salvar() + ";Comum";
 	}
 
+	public ClienteEspecialista toEspecialista() {
+		return new ClienteEspecialista(this);
+	}
+
 }

@@ -19,6 +19,13 @@ public class ClienteEspecialista extends Cliente {
 		this.setHistorico(new HashSet<>(historico));
 		this.setMinhaLista(minhaLista);
 	}
+
+	public ClienteEspecialista(ClienteComum cliente) {
+		super(cliente.getNome(), cliente.getSenha());
+		this.avaliacoes = cliente.getAvaliacoes();
+		this.setHistorico(new HashSet<>(cliente.getHistorico()));
+		this.setMinhaLista(cliente.getMinhaLista());
+	}
 	@Override
 	public void avalia(Midia midia, double nota, String comentario) throws MidiaJaAvaliada {
 		if (avaliacoes.containsKey(midia))

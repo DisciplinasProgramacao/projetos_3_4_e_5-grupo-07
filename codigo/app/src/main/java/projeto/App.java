@@ -103,7 +103,7 @@ public class App {
 				linhas.add(arquivoclientes.nextLine());
 			}
 			plataforma.carregarClientes(linhas);
-		} catch (Exception e) {}
+		} catch (IOException e) {}
 		try ( Scanner arquivoAudiencia = new Scanner(new File("audiencia.csv")) ) {
 			List<String> linhas = new LinkedList<String>();
 			while (arquivoAudiencia.hasNextLine()) {
@@ -381,11 +381,11 @@ public class App {
 					continue;
 				}
 				if (!(cliente instanceof ClienteComum)) {
-					cliente.avalia(midia, nota);
+					plataforma.avalia(midia, nota);
 				} else {
 					System.out.println("Digite o comentario da avaliacao");
 					String comentario = scanner.nextLine();
-					cliente.avalia(midia, nota, comentario);
+					plataforma.avalia(midia, nota, comentario);
 				}
 				System.out.println("Avaliação registrada");
 				break;

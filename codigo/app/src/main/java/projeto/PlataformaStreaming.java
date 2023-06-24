@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import projeto.exceptions.ClienteSemAcesso;
+import projeto.exceptions.MidiaJaAvaliada;
 
 public class PlataformaStreaming{
     private String nome;
@@ -31,6 +32,19 @@ public class PlataformaStreaming{
 
 	public void adicionarCliente(Cliente cliente) {
 		clientes.put(cliente.getNome(), cliente);
+	}
+
+	public void avalia(Midia midia, double nota, String comentario) throws MidiaJaAvaliada {
+		clienteAtual.avalia(midia, nota, comentario);
+		if (clienteAtual.getNAvaliacoes() > 5 && clienteAtual instanceof ClienteComum) {
+			ClienteEspecialista c = ((ClienteComum) clienteAtual).toEspecialista();
+			clientes.put(c.getNome(), c);
+			clienteAtual = c;
+		}
+	}
+
+	public void avalia(Midia midia, double nota) throws MidiaJaAvaliada {
+		clienteAtual.avalia(midia, nota);
 	}
 
 	public String getNome() {
