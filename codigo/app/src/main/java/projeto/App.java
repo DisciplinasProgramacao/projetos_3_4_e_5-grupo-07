@@ -67,32 +67,56 @@ public class App {
 		try (FileWriter audiencia = new FileWriter("audiencia.csv", false)) {
 			audiencia.write(plataforma.salvarAudiencia());
 		} catch (IOException e) {}
-		try (FileWriter avaliacoes = new FileWriter("audiencia.csv", false)) {
+		try (FileWriter avaliacoes = new FileWriter("avaliacoes.csv", false)) {
 			avaliacoes.write(plataforma.salvarAvaliacoes());
+		} catch (IOException e) {}
+		try (FileWriter lancamentos = new FileWriter("lancamentos.csv", false)) {
+			lancamentos.write(plataforma.salvarLancamentos());
 		} catch (IOException e) {}
 	}
 
 	private static void carregaArquivos() {
 		try ( Scanner arquivofilmes = new Scanner(new File("filmes.csv")) ) {
-			List<String> filmes = new LinkedList<String>();
+			List<String> linhas = new LinkedList<String>();
 			while (arquivofilmes.hasNextLine()) {
-				filmes.add(arquivofilmes.nextLine());
+				linhas.add(arquivofilmes.nextLine());
 			}
-			plataforma.carregarFilmes(filmes);
+			plataforma.carregarFilmes(linhas);
 		} catch (FileNotFoundException e) {}
 		try ( Scanner arquivoseries = new Scanner(new File("series.csv")) ) {
-			List<String> series = new LinkedList<String>();
+			List<String> linhas = new LinkedList<String>();
 			while (arquivoseries.hasNextLine()) {
-				series.add(arquivoseries.nextLine());
+				linhas.add(arquivoseries.nextLine());
 			}
-			plataforma.carregarSeries(series);
+			plataforma.carregarSeries(linhas);
 		} catch (FileNotFoundException e) {}
 		try ( Scanner arquivoclientes = new Scanner(new File("clientes.csv")) ) {
-			List<String> clientes = new LinkedList<String>();
+			List<String> linhas = new LinkedList<String>();
 			while (arquivoclientes.hasNextLine()) {
-				clientes.add(arquivoclientes.nextLine());
+				linhas.add(arquivoclientes.nextLine());
 			}
-			plataforma.carregarClientes(clientes);
+			plataforma.carregarClientes(linhas);
+		} catch (FileNotFoundException e) {}
+		try ( Scanner arquivoAudiencia = new Scanner(new File("audiencia.csv")) ) {
+			List<String> linhas = new LinkedList<String>();
+			while (arquivoAudiencia.hasNextLine()) {
+				linhas.add(arquivoAudiencia.nextLine());
+			}
+			plataforma.carregarAudiencia(linhas);
+		} catch (FileNotFoundException e) {}
+		try ( Scanner arquivoAvaliacoes = new Scanner(new File("avaliacoes.csv")) ) {
+			List<String> linhas = new LinkedList<String>();
+			while (arquivoAvaliacoes.hasNextLine()) {
+				linhas.add(arquivoAvaliacoes.nextLine());
+			}
+			plataforma.carregarAvaliacoes(linhas);
+		} catch (FileNotFoundException e) {}
+		try ( Scanner arquivoLancamentos = new Scanner(new File("lancamentos.csv")) ) {
+			List<String> linhas = new LinkedList<String>();
+			while (arquivoLancamentos.hasNextLine()) {
+				linhas.add(arquivoLancamentos.nextLine());
+			}
+			plataforma.carregarLancamentos(linhas);
 		} catch (FileNotFoundException e) {}
 	}
 
