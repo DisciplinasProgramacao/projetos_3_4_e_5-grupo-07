@@ -27,4 +27,8 @@ public class ClienteEspecialista extends Cliente {
 		midia.avalia(this.getNome(), avaliacao);
 	}
 
+	@Override
+	public String salvar() {
+		return super.salvar() + ";Especialista";
+	}
 }
