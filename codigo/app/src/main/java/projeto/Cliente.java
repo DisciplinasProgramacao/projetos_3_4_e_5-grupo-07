@@ -94,11 +94,13 @@ public abstract class Cliente {
 	 * @param midia
 	 * @param nota
 	 */
-	public void avalia(Midia midia, int nota, String comentario) throws MidiaJaAvaliada, NaoPodeComentarException {
+	public void avalia(Midia midia, double nota, String comentario) throws MidiaJaAvaliada, NaoPodeComentarException {
+		if (comentario.equals("NULL"))
+			this.avalia(midia, nota);
 		throw new NaoPodeComentarException();
 	}
 	
-	public void avalia(Midia midia, int nota) throws MidiaJaAvaliada {
+	public void avalia(Midia midia, double nota) throws MidiaJaAvaliada {
 		if (avaliacoes.containsKey(midia))
 			throw new MidiaJaAvaliada();
 		Avaliacao avaliacao = new Avaliacao(nota);
@@ -143,8 +145,6 @@ public abstract class Cliente {
 				sb.append(entry.getKey().getNome());
 				sb.append(",");
 				sb.append(entry.getValue().getNota());
-				sb.append(",");
-				sb.append(entry.getValue().getData());
 				sb.append(",");
 				sb.append(entry.getValue().getComentario());
 		});

@@ -131,7 +131,10 @@ public class PlataformaStreaming{
 					String[] dados = avaliacao.split(",");
 					Midia midia = midias.get(dados[0]);
 					double nota = Double.parseDouble(dados[1]);
-					cliente.avalia(midia, nota);
+					String comentario = dados[2];
+					try {
+						cliente.avalia(midia, nota, comentario);
+					} catch (Exception e) {}
 				});
 		});
 	}

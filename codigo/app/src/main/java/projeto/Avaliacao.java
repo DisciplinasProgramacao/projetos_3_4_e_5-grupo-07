@@ -4,11 +4,10 @@ public class Avaliacao {
 
 	private double nota;
 	private String comentario;
-	private String data;
 	
 	public Avaliacao(double nota, String comentario) {
 		this.nota = nota;
-		this.comentario = comentario;
+		this.comentario = (!comentario.equals("NULL"))? comentario:null;
 	}
 
 	public Avaliacao(double nota) {
@@ -21,13 +20,5 @@ public class Avaliacao {
 
 	public String getComentario() {
 		return (comentario != null)? comentario:"NULL";
-	}
-
-	public String getData() {
-		return data;
-	}
-
-	public void setData(String data) {
-		this.data = data;
 	}
 }
