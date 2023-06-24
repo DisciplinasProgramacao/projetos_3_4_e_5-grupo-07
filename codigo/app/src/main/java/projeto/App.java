@@ -263,7 +263,7 @@ public class App {
 			int option = scanner.nextInt();
 			switch (option) {
 				case 1:
-					midia.registrarAudiencia();
+					midia.assistir();
 					break;
 				case 2:
 					break;
