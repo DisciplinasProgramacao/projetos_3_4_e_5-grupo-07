@@ -92,7 +92,7 @@ public abstract class Midia {
 		StringBuilder sb = new StringBuilder();
 		sb.append(nome);
 		sb.append(";");
-		String elementos = String.join(";", audiencia);
+		String elementos = String.join(",", audiencia);
 		sb.append(elementos);
 		return sb.toString();
 	}

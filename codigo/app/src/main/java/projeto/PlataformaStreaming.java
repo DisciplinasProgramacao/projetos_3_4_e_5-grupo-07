@@ -138,4 +138,15 @@ public class PlataformaStreaming{
 				});
 		});
 	}
+
+	public void carregarAudiencia(List<String> linhascsv) {
+		linhascsv.parallelStream().forEach(linha -> {
+			String[] separada = linha.split(";");
+			Midia midia = midias.get(separada[0]);
+			Arrays.stream(separada[1].split(","))
+				.forEach(nomeCliente -> {
+					midia.assistir(nomeCliente);
+				});
+		});
+	}
 }
