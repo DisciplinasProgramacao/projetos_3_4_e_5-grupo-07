@@ -12,7 +12,7 @@ public class Avaliacao {
 	}
 
 	public Avaliacao(double nota) {
-		this.nota = nota;
+		this(nota, null);
 	}
 
 	public double getNota() {
@@ -20,7 +20,7 @@ public class Avaliacao {
 	}
 
 	public String getComentario() {
-		return comentario;
+		return (comentario != null)? comentario:"NULL";
 	}
 
 	public String getData() {
