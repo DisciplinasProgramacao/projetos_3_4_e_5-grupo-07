@@ -26,7 +26,7 @@ Depois que esses campos forem preenchidos, o cliente será cadastrado.
   * Digite o nome da série:
   * Digite o nome da genero:
   * Digite o nome da linguagem:
-  * Digite a data de lançamento no formato dd/MM/yyyy:
+  * Digite a data de lançamento no formato DD/MM/YYYY:
   * Digite o número de episodios:
 Depois que esses campos forem preenchidos, a série será cadastrada.
 
@@ -34,7 +34,7 @@ Depois que esses campos forem preenchidos, a série será cadastrada.
   * Digite o nome do filme:
   * Digite o nome do genero:
   * Digite o nome do linguagem:
-  * Digite a data de lançamento no formato dd/MM/yyyy:
+  * Digite a data de lançamento no formato DD/MM/YYYY:
   * Digite a duração do filme:
 Depois que esses campos forem preenchidos, o filme será cadastrado.
 
