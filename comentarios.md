@@ -1,24 +1,24 @@
 ## TP em grupo
 
-## Nota base: 5,8
+## Nota base: 8
 
 ### App 2/6 (5 pontos) - 1,7
 	Protótipo de sistema 4 ✔✔
 	Robustez do protótipo 2 ❌
 	
-### Requisitos principais 8/21 + 0/6 (10 pontos) - 3
-	Implementação das classes Cliente, Serie, Midia, Filme e PlataformaStreaming 2 ✔
+### Requisitos principais 14/21 + 0/6 (10 pontos) - 5,2
+	Implementação das classes Cliente, Serie, Midia, Filme e PlataformaStreaming 2 ✔✔
 	Carga de dados 2 ✔
-	Cadastro e salvamento 2  ✔
+	Cadastro e salvamento 2  ✔✔
 	Audiência da mídia 1 ✔
 	Implementação do sistema de avaliação de mídias: uma mídia tem sua avaliação média; 2 ✔
-	Um cliente não pode avaliar a mesma mídia duas vezes; 1 ❌
+	Um cliente não pode avaliar a mesma mídia duas vezes; 1 ✔
 	Clientes podem ser especialistas, e estes últimos podem adicionar comentários à avaliação; 3 ✔
 	Verificação de especialistas 2  ✔
 	Os gêneros de mídias devem ser limitados à esta lista 1 ✔
-	Algumas mídias serão marcadas como “Lançamento”. 1 ❌
-	Estas mídias só poderão ser assistidas por clientes “profissionais” 2 ❌
-	Clientes Profissionais também podem escrever comentários para as mídias assistidas. 2 ❌
+	Algumas mídias serão marcadas como “Lançamento”. 1 ✔
+	Estas mídias só poderão ser assistidas por clientes “profissionais” 2 ✔
+	Clientes Profissionais também podem escrever comentários para as mídias assistidas. 2 ✔
 	
 	Relatórios 0/6 
 	
